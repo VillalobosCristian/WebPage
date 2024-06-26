@@ -1,12 +1,12 @@
 /* CSS Variables */
 :root {
-    --primary-color: #007bff;
-    --secondary-color: #6c757d;
-    --background-color: #f4f4f4;
-    --text-color: #333;
-    --dark-background-color: #333;
-    --dark-text-color: #fff;
-    --font-family: 'Helvetica Neue', Arial, sans-serif;
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --background-color: #ecf0f1;
+    --text-color: #2c3e50;
+    --dark-background-color: #2c3e50;
+    --dark-text-color: #ecf0f1;
+    --font-family: 'Lato', sans-serif;
     --spacing-small: 1em;
     --spacing-medium: 2em;
     --spacing-large: 3em;
@@ -102,73 +102,6 @@ section h2 {
     gap: var(--spacing-small);
 }
 
-.skill {
-    text-align: center;
-}
-
-.skill-bar {
-    width: 100%;
-    height: 10px;
-    background: #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-    margin-bottom: var(--spacing-small);
-}
-
-.skill-level {
-    height: 100%;
-    background: var(--primary-color);
-    transition: width 1s ease-in-out;
-}
-
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-medium);
-}
-
-.card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.card img {
-    width: 100%;
-    height: auto;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-}
-
-.card-content {
-    padding: var(--spacing-small);
-}
-
-.card h3 {
-    margin: 0;
-    font-size: clamp(1.2rem, 2vw, 1.8rem);
-    color: var(--primary-color);
-}
-
-.card p {
-    color: var(--secondary-color);
-}
-
-#publications ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-#publications li {
-    margin-bottom: var(--spacing-small);
-}
-
 .contact-item {
     display: flex;
     align-items: center;
@@ -226,9 +159,13 @@ html {
 
 /* Print Styles */
 @media print {
-    header, footer, .toggle-container {
+
+    header,
+    footer,
+    .toggle-container {
         display: none;
     }
+
     body {
         font-size: 12pt;
     }
