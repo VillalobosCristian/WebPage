@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me - Cristian Villalobos</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
@@ -16,12 +17,22 @@
                 <ul>
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#publications">Publications</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
+            <div class="toggle-container">
+                <button id="dark-mode-toggle">Toggle Dark Mode</button>
+            </div>
         </div>
     </header>
+    <section id="hero">
+        <div class="container">
+            <img src="profile.jpg" alt="Profile Image" class="profile-img">
+            <h2>Cristian Villalobos</h2>
+            <p>Physicist specializing in bacterial suspension dynamics</p>
+        </div>
+    </section>
     <main>
         <section id="about">
             <div class="container">
@@ -31,30 +42,31 @@
             </div>
         </section>
         <section id="skills">
-            <div class="container">
+            <div class="container grid">
                 <h2>Skills</h2>
-                <ul>
-                    <li>LaTeX</li>
-                    <li>MATLAB</li>
-                    <li>Python</li>
-                    <li>Active Matter Physics</li>
-                </ul>
+                <div class="skill"><i class="fas fa-code"></i> LaTeX</div>
+                <div class="skill"><i class="fas fa-cogs"></i> MATLAB</div>
+                <div class="skill"><i class="fas fa-python"></i> Python</div>
+                <div class="skill"><i class="fas fa-atom"></i> Active Matter Physics</div>
             </div>
         </section>
-        <section id="projects">
+        <section id="publications">
             <div class="container">
-                <h2>Projects</h2>
+                <h2>Publications</h2>
                 <ul>
-                    <li>Flow Fluctuations in Bacterial Suspensions</li>
-                    <li>Recovering the Activity Parameters of an Active Fluid Confined in a Sphere</li>
-                    <li>Activity in Curved Bacterial Baths</li>
+                    <li><a href="https://link.springer.com/article/10.1007/s10035-022-01221-x" target="_blank">"Flow
+                            Fluctuations in Bacterial Suspensions" - Granular Matter (2022)</a></li>
+                    <li><a href="https://arxiv.org/pdf/2403.11933" target="_blank">"Recovering the Activity Parameters
+                            of an Active Fluid Confined in a Sphere" - under review</a></li>
                 </ul>
             </div>
         </section>
         <section id="contact">
-            <div class="container">
+            <div class="container grid">
                 <h2>Contact</h2>
-                <p>Email: myemail@example.com</p>
+                <div class="contact-item"><i class="fas fa-envelope"></i> myemail@example.com</div>
+                <div class="contact-item"><i class="fas fa-phone"></i> +123 456 7890</div>
+                <div class="contact-item"><i class="fas fa-map-marker-alt"></i> Santiago, Chile</div>
             </div>
         </section>
     </main>
