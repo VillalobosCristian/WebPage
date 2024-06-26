@@ -5,6 +5,11 @@ body {
     box-sizing: border-box;
 }
 
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
 header {
     background: #333;
     color: white;
@@ -28,8 +33,7 @@ header nav ul li a {
 }
 
 section {
-    padding: 2em;
-    margin: 2em 0;
+    padding: 2em 0;
 }
 
 footer {
@@ -37,7 +41,4 @@ footer {
     color: white;
     text-align: center;
     padding: 1em 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
 }
