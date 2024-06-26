@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Cristian Villalobos</title>
+    <title>Cristian Villalobos - Physicist</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -22,18 +23,22 @@
                 </ul>
             </nav>
             <div class="toggle-container">
-                <button id="dark-mode-toggle" aria-label="Toggle dark mode">Toggle Dark Mode</button>
+                <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
         </div>
     </header>
-    <section id="hero">
-        <div class="container">
-            <img src="profile.jpg" alt="Profile Image of Cristian Villalobos" class="profile-img" loading="lazy">
-            <h2>Cristian Villalobos</h2>
-            <p>Physicist specializing in bacterial suspension dynamics</p>
-        </div>
-    </section>
+
     <main>
+        <section id="hero">
+            <div class="container">
+                <img src="profile.jpg" alt="Profile Image of Cristian Villalobos" class="profile-img" loading="lazy">
+                <h2>Cristian Villalobos</h2>
+                <p id="typing-effect">Physicist specializing in bacterial suspension dynamics</p>
+            </div>
+        </section>
+
         <section id="about">
             <div class="container">
                 <h2>About Me</h2>
@@ -41,34 +46,56 @@
                     exploring the complexities of active matter systems and their applications in various fields.</p>
             </div>
         </section>
+
         <section id="publications">
             <div class="container">
                 <h2>Publications</h2>
-                <ul>
-                    <li><a href="https://link.springer.com/article/10.1007/s10035-022-01221-x" target="_blank">"Flow
-                            Fluctuations in Bacterial Suspensions" - Granular Matter (2022)</a></li>
-                    <li><a href="https://arxiv.org/pdf/2403.11933" target="_blank">"Recovering the Activity Parameters
-                            of an Active Fluid Confined in a Sphere" - under review</a></li>
-                </ul>
+                <div class="publication-grid">
+                    <div class="publication-card">
+                        <h3>"Flow Fluctuations in Bacterial Suspensions"</h3>
+                        <p>Granular Matter (2022)</p>
+                        <a href="https://link.springer.com/article/10.1007/s10035-022-01221-x" target="_blank"
+                            class="btn">Read More</a>
+                    </div>
+                    <div class="publication-card">
+                        <h3>"Recovering the Activity Parameters of an Active Fluid Confined in a Sphere"</h3>
+                        <p>Under review</p>
+                        <a href="https://arxiv.org/pdf/2403.11933" target="_blank" class="btn">Read Preprint</a>
+                    </div>
+                </div>
             </div>
         </section>
+
         <section id="contact">
-            <div class="container grid">
+            <div class="container">
                 <h2>Contact</h2>
-                <div class="contact-item"><i class="fas fa-envelope" aria-hidden="true"></i> <span
-                        class="sr-only">Email:</span>myemail@example.com</div>
-                <div class="contact-item"><i class="fas fa-phone" aria-hidden="true"></i> <span
-                        class="sr-only">Phone:</span>+123 456 7890</div>
-                <div class="contact-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <span
-                        class="sr-only">Location:</span>Santiago, Chile</div>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <span class="sr-only">Email:</span>
+                        <a href="mailto:cristian.villalobos@ug.uchile.cl">cristian.villalobos@ug.uchile.cl</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone" aria-hidden="true"></i>
+                        <span class="sr-only">Phone:</span>
+                        <a href="tel:+56988274915">(+569) 88274915</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <span class="sr-only">Location:</span>
+                        <span>Santiago, Chile</span>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
+
     <footer>
         <div class="container">
-            <p>&copy; 2024 Cristian Villalobos</p>
+            <p>&copy; <span id="current-year"></span> Cristian Villalobos</p>
         </div>
     </footer>
+
     <script src="scripts.js"></script>
 </body>
 

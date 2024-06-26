@@ -1,12 +1,14 @@
 // Smooth scrolling
-document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
-        target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-        });
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
     });
 });
 
@@ -14,24 +16,29 @@ document.querySelectorAll('nav a').forEach(anchor => {
 const toggleButton = document.getElementById('dark-mode-toggle');
 const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-const currentTheme = localStorage.getItem('theme');
-if (currentTheme === 'dark') {
-    document.body.classList.toggle('dark-mode');
-} else if (currentTheme === 'light') {
-    document.body.classList.remove('dark-mode');
+function setTheme(theme) {
+    document.body.classList.toggle('dark-mode', theme === 'dark');
+    localStorage.setItem('theme', theme);
+    toggleButton.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+}
+
+const storedTheme = localStorage.getItem('theme');
+if (storedTheme) {
+    setTheme(storedTheme);
+} else if (prefersDarkScheme.matches) {
+    setTheme('dark');
 }
 
 toggleButton.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
-    localStorage.setItem('theme', theme);
+    const newTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+    setTheme(newTheme);
 });
 
 // Animate sections on scroll
 const sections = document.querySelectorAll('section');
 const observerOptions = {
     rootMargin: '0px',
-    threshold: 0.2,
+    threshold: 0.1,
 };
 
 const observerCallback = (entries, observer) => {
@@ -50,8 +57,8 @@ sections.forEach(section => {
 
 // Typing effect
 const typingElement = document.getElementById('typing-effect');
-const typingText = 'Exploring the dynamics of active matter systems';
-const typingDelay = 100;
+const typingText = 'Physicist specializing in bacterial suspension dynamics';
+const typingDelay = 75;
 let typingIndex = 0;
 
 function typeText() {
@@ -64,29 +71,19 @@ function typeText() {
 
 document.addEventListener('DOMContentLoaded', typeText);
 
-// Language switcher
-const languageToggle = document.getElementById('language-toggle');
-const defaultLanguage = 'en';
+// Dynamic year in footer
+const currentYear = new Date().getFullYear();
+document.querySelector('footer p').textContent = `© ${currentYear} Cristian Villalobos`;
 
-languageToggle.addEventListener('click', () => {
-    const currentLanguage = languageToggle.textContent.toLowerCase();
-    const newLanguage = currentLanguage === 'es' ? 'en' : 'es';
-    languageToggle.textContent = newLanguage.toUpperCase();
-    loadLanguage(newLanguage);
-});
-
-function loadLanguage(language) {
-    const contentElements = document.querySelectorAll('[data-i18n]');
-    fetch(`./lang/${language}.json`)
-        .then(response => response.json())
-        .then(data => {
-            contentElements.forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                element.textContent = data[key];
-            });
-        });
+// Lazy loading images
+if ('loading' in HTMLImageElement.prototype) {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    images.forEach(img => {
+        img.src = img.dataset.src;
+    });
+} else {
+    // Fallback for browsers that don't support lazy loading
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+    document.body.appendChild(script);
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    loadLanguage(defaultLanguage);
-});
