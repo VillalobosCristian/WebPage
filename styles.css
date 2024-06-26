@@ -124,6 +124,11 @@ section h2 {
     margin-bottom: var(--spacing-medium);
 }
 
+section.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .publication-grid,
 .contact-grid {
     display: grid;
@@ -177,6 +182,25 @@ footer {
     color: white;
     text-align: center;
     padding: var(--spacing-medium) 0;
+}
+
+footer nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-small);
+}
+
+footer nav ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer nav ul li a:hover,
+footer nav ul li a:focus {
+    color: var(--primary-color);
 }
 
 .dark-mode {

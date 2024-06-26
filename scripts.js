@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', typeText);
 
 // Dynamic year in footer
 const currentYear = new Date().getFullYear();
-document.querySelector('footer p').textContent = `© ${currentYear} Cristian Villalobos`;
+document.querySelector('footer p span').textContent = currentYear;
 
 // Lazy loading images
 if ('loading' in HTMLImageElement.prototype) {
