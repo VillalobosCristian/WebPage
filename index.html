@@ -5,106 +5,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cristian Villalobos - Physicist</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <header>
+    <header class="bg-primary text-white py-3">
         <div class="container">
-            <h1>Cristian Villalobos</h1>
-            <nav aria-label="Main navigation">
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="curriculum.html">Curriculum</a></li>
-                    <li><a href="#publications">Publications</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="toggle-container">
-                <button id="dark-mode-toggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-moon"></i>
-                </button>
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="h3 mb-0">Cristian Villalobos</h1>
+                <nav>
+                    <ul class="nav">
+                        <li class="nav-item"><a class="nav-link text-white" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="curriculum.html">Curriculum</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#publications">Publications</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="notes.html">Notes</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <button id="dark-mode-toggle" class="btn btn-outline-light"><i class="fas fa-moon"></i></button>
             </div>
         </div>
     </header>
 
     <main>
-        <section id="hero">
+        <section id="hero" class="text-center py-5 bg-light">
             <div class="container">
-                <img src="profile.jpg" alt="Profile Image of Cristian Villalobos" class="profile-img" loading="lazy">
-                <h2>Cristian Villalobos</h2>
+                <img src="profile.jpg" alt="Profile Image of Cristian Villalobos" class="rounded-circle mb-3"
+                    width="150" height="150" loading="lazy">
+                <h2 class="h3">Cristian Villalobos</h2>
                 <p id="typing-effect">Physicist specializing in bacterial suspension dynamics</p>
             </div>
         </section>
 
-        <section id="about">
+        <section id="about" class="py-5">
             <div class="container">
-                <h2>About Me</h2>
-                <p>I'm Cristian Villalobos, a passionate physicist specializing in bacterial suspension dynamics. I love
-                    exploring the complexities of active matter systems and their applications in various fields.</p>
+                <h2 class="text-center mb-4">About Me</h2>
+                <p>I'm Cristian Villalobos, a physicist specializing in bacterial suspension dynamics. I love exploring
+                    the complexities of active matter systems and their applications in various fields.</p>
             </div>
         </section>
 
-        <section id="publications">
+        <section id="publications" class="py-5 bg-light">
             <div class="container">
-                <h2>Publications</h2>
-                <div class="publication-grid">
-                    <div class="publication-card">
-                        <h3>"Flow Fluctuations in Bacterial Suspensions"</h3>
-                        <p>Granular Matter (2022)</p>
-                        <a href="https://link.springer.com/article/10.1007/s10035-022-01221-x" target="_blank"
-                            class="btn">Read More</a>
+                <h2 class="text-center mb-4">Publications</h2>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title h5">"Flow Fluctuations in Bacterial Suspensions"</h3>
+                                <p class="card-text">Granular Matter (2022)</p>
+                                <a href="https://link.springer.com/article/10.1007/s10035-022-01221-x" target="_blank"
+                                    class="btn btn-primary">Read More</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="publication-card">
-                        <h3>"Recovering the Activity Parameters of an Active Fluid Confined in a Sphere"</h3>
-                        <p>Under review</p>
-                        <a href="https://arxiv.org/pdf/2403.11933" target="_blank" class="btn">Read Preprint</a>
+                    <div class="col-md-6 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title h5">"Recovering the Activity Parameters of an Active Fluid
+                                    Confined in a Sphere"</h3>
+                                <p class="card-text">Under review</p>
+                                <a href="https://arxiv.org/pdf/2403.11933" target="_blank" class="btn btn-primary">Read
+                                    Preprint</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact">
+        <section id="contact" class="py-5">
             <div class="container">
-                <h2>Contact</h2>
-                <div class="contact-grid">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope" aria-hidden="true"></i>
-                        <span class="sr-only">Email:</span>
-                        <a href="mailto:cristian.villalobos@ug.uchile.cl">cristian.villalobos@ug.uchile.cl</a>
+                <h2 class="text-center mb-4">Contact</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-envelope fa-2x me-3"></i>
+                            <a href="mailto:cristian.villalobos@ug.uchile.cl">cristian.villalobos@ug.uchile.cl</a>
+                        </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone" aria-hidden="true"></i>
-                        <span class="sr-only">Phone:</span>
-                        <a href="tel:+56988274915">(+569) 88274915</a>
+                    <div class="col-md-4 mb-3">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-phone fa-2x me-3"></i>
+                            <a href="tel:+56988274915">(+569) 88274915</a>
+                        </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                        <span class="sr-only">Location:</span>
-                        <span>Santiago, Chile</span>
+                    <div class="col-md-4 mb-3">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-map-marker-alt fa-2x me-3"></i>
+                            <span>Santiago, Chile</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer class="bg-secondary text-white text-center py-3">
         <div class="container">
             <p>&copy; <span id="current-year"></span> Cristian Villalobos</p>
-            <nav aria-label="Footer navigation">
-                <ul>
-                    <li><a href="#">Terms</a></li>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Security</a></li>
-                    <li><a href="#">Docs</a></li>
-                    <li><a href="#">Contact</a></li>
+            <nav>
+                <ul class="nav justify-content-center">
+                    <li class="nav-item"><a class="nav-link text-white" href="#">Terms</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#">Privacy</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#">Security</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#">Docs</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="scripts.js"></script>
 </body>
 

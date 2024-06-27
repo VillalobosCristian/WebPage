@@ -5,107 +5,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curriculum Vitae - Cristian Villalobos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
-    <header>
+    <header class="bg-primary text-white py-3">
         <div class="container">
-            <h1>Cristian Villalobos</h1>
-            <nav aria-label="Main navigation">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="curriculum.html">Curriculum</a></li>
-                    <li><a href="index.html#publications">Publications</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="toggle-container">
-                <button id="dark-mode-toggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-moon"></i>
-                </button>
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="h3 mb-0">Cristian Villalobos</h1>
+                <nav>
+                    <ul class="nav">
+                        <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="curriculum.html">Curriculum</a></li>
+                        <li class="nav-item"><a class="nav-link text-white"
+                                href="index.html#publications">Publications</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <button id="dark-mode-toggle" class="btn btn-outline-light"><i class="fas fa-moon"></i></button>
             </div>
         </div>
     </header>
 
     <main>
-        <section id="curriculum">
+        <section id="curriculum" class="py-5">
             <div class="container">
-                <h2>Curriculum Vitae</h2>
-
-                <div class="curriculum-section">
+                <h2 class="text-center mb-4">Curriculum Vitae</h2>
+                <div class="mb-5">
                     <h3>Personal Details</h3>
-                    <div class="curriculum-item">
-                        <p><strong>Date of Birth:</strong> November 02, 1994</p>
-                        <p><strong>Address:</strong> Av. Viel 1616. Dpto 1804. Santiago, Chile</p>
-                        <p><strong>Phone:</strong> (+569) 88274915</p>
-                        <p><strong>Email:</strong> cristian.villalobos@ug.uchile.cl</p>
-                        <p><strong>Nationality:</strong> Chilean</p>
-                    </div>
+                    <p><strong>Date of Birth:</strong> November 02, 1994</p>
+                    <p><strong>Address:</strong> Av. Viel 1616. Dpto 1804. Santiago, Chile</p>
+                    <p><strong>Phone:</strong> (+569) 88274915</p>
+                    <p><strong>Email:</strong> cristian.villalobos@ug.uchile.cl</p>
+                    <p><strong>Nationality:</strong> Chilean</p>
                 </div>
 
-                <div class="curriculum-section">
+                <div class="mb-5">
                     <h3>Education</h3>
-                    <div class="curriculum-item">
-                        <h4>PhD Candidate - Sciences, mention in Physics</h4>
-                        <p>Universidad de Chile, 2019 - Present</p>
-                    </div>
-                    <div class="curriculum-item">
-                        <h4>M.S. in Sciences, mention in Physics</h4>
-                        <p>Pontificia Universidad Católica de Valparaíso, 2018 - 2019</p>
-                    </div>
-                    <div class="curriculum-item">
-                        <h4>B.S. Physics</h4>
-                        <p>Pontificia Universidad Católica de Valparaíso, 2013 - 2017</p>
-                    </div>
+                    <p><strong>PhD Candidate - Sciences, mention in Physics</strong></p>
+                    <p>Universidad de Chile, 2019 - Present</p>
+                    <p><strong>M.S. in Sciences, mention in Physics</strong></p>
+                    <p>Pontificia Universidad Católica de Valparaíso, 2018 - 2019</p>
+                    <p><strong>B.S. Physics</strong></p>
+                    <p>Pontificia Universidad Católica de Valparaíso, 2013 - 2017</p>
                 </div>
 
-                <div class="curriculum-section">
+                <div class="mb-5">
                     <h3>Skills</h3>
-                    <div class="curriculum-item">
-                        <h4>Languages</h4>
-                        <div class="skills-list">
-                            <span class="skill-tag">Spanish (native)</span>
-                            <span class="skill-tag">English (intermediate)</span>
-                        </div>
-                    </div>
-                    <div class="curriculum-item">
-                        <h4>Programming</h4>
-                        <div class="skills-list">
-                            <span class="skill-tag">MATLAB</span>
-                            <span class="skill-tag">Python</span>
-                        </div>
-                    </div>
+                    <p><strong>Languages</strong></p>
+                    <p>Spanish (native), English (intermediate)</p>
+                    <p><strong>Programming</strong></p>
+                    <p>MATLAB, Python</p>
                 </div>
 
-                <div class="curriculum-section">
+                <div class="mb-5">
                     <h3>Teaching Experience</h3>
-                    <div class="curriculum-item">
-                        <h4>Universidad de Chile</h4>
-                        <ul>
-                            <li>2024 - Teacher's assistant of Fluid Mechanics</li>
-                            <li>2023 - Teacher's assistant of Continuum Mechanics</li>
-                            <li>2022 - Teacher's assistant of Fluid Mechanics</li>
-                            <li>2022 - Teacher's assistant of Introduction to Classical Physics</li>
-                            <li>2020 - Teacher's assistant of Introduction to Classical Physics</li>
-                            <li>2019 - Teacher's assistant of Introduction to Classical Physics</li>
-                        </ul>
-                    </div>
-                    <div class="curriculum-item">
-                        <h4>Pontificia Universidad Católica de Valparaíso</h4>
-                        <ul>
-                            <li>2018 - Teacher's assistant of Electrodynamics</li>
-                            <li>2018 - Teacher's assistant of Experimental Optics and Waves</li>
-                            <li>2018 - Teacher's assistant of Experimental Electromagnetism</li>
-                            <li>2017 - Teacher's assistant of Theoretical Physics for Pedagogy in physics</li>
-                            <li>2017 - Teacher's assistant of Experimental Electromagnetism</li>
-                            <li>2016 - Teacher's assistant of Experimental Electromagnetism</li>
-                        </ul>
-                    </div>
+                    <p><strong>Universidad de Chile</strong></p>
+                    <ul>
+                        <li>2024 - Teacher's assistant of Fluid Mechanics</li>
+                        <li>2023 - Teacher's assistant of Continuum Mechanics</li>
+                        <li>2022 - Teacher's assistant of Fluid Mechanics</li>
+                        <li>2022 - Teacher's assistant of Introduction to Classical Physics</li>
+                        <li>2020 - Teacher's assistant of Introduction to Classical Physics</li>
+                        <li>2019 - Teacher's assistant of Introduction to Classical Physics</li>
+                    </ul>
+                    <p><strong>Pontificia Universidad Católica de Valparaíso</strong></p>
+                    <ul>
+                        <li>2018 - Teacher's assistant of Electrodynamics</li>
+                        <li>2018 - Teacher's assistant of Experimental Optics and Waves</li>
+                        <li>2018 - Teacher's assistant of Experimental Electromagnetism</li>
+                        <li>2017 - Teacher's assistant of Theoretical Physics for Pedagogy in physics</li>
+                        <li>2017 - Teacher's assistant of Experimental Electromagnetism</li>
+                        <li>2016 - Teacher's assistant of Experimental Electromagnetism</li>
+                    </ul>
                 </div>
 
-                <div class="curriculum-section">
+                <div class="mb-5">
                     <h3>Conferences</h3>
                     <ul>
                         <li>2022 - WE-Heraeus Summer School on Active Matter and Complex Media at the Institut d'Etudes
@@ -121,43 +98,38 @@
                     </ul>
                 </div>
 
-                <div class="curriculum-section">
+                <div>
                     <h3>Research</h3>
-                    <div class="curriculum-item">
-                        <h4>PhD Thesis (2019-date)</h4>
-                        <p>Bacterial Fluctuation in Confined Spaces</p>
-                    </div>
-                    <div class="curriculum-item">
-                        <h4>Master Thesis (2018-2019)</h4>
-                        <p>Crater Formation on Levitating Sands</p>
-                    </div>
-                    <div class="curriculum-item">
-                        <h4>Internships</h4>
-                        <ul>
-                            <li>2021 - Active Emulsion at École Supérieure de Physique et de Chimie Industrielle</li>
-                            <li>2019 - Bacterial Shells at École Supérieure de Physique et de Chimie Industrielle</li>
-                        </ul>
-                    </div>
+                    <p><strong>PhD Thesis (2019-date)</strong></p>
+                    <p>Bacterial Fluctuation in Confined Spaces</p>
+                    <p><strong>Master Thesis (2018-2019)</strong></p>
+                    <p>Crater Formation on Levitating Sands</p>
+                    <p><strong>Internships</strong></p>
+                    <ul>
+                        <li>2021 - Active Emulsion at École Supérieure de Physique et de Chimie Industrielle</li>
+                        <li>2019 - Bacterial Shells at École Supérieure de Physique et de Chimie Industrielle</li>
+                    </ul>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer class="bg-secondary text-white text-center py-3">
         <div class="container">
             <p>&copy; <span id="current-year"></span> Cristian Villalobos</p>
-            <nav aria-label="Footer navigation">
-                <ul>
-                    <li><a href="#">Terms</a></li>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Security</a></li>
-                    <li><a href="#">Docs</a></li>
-                    <li><a href="#">Contact</a></li>
+            <nav>
+                <ul class="nav justify-content-center">
+                    <li class="nav-item"><a class="nav-link text-white" href="#">Terms</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#">Privacy</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#">Security</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#">Docs</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="scripts.js"></script>
 </body>
 

@@ -87,3 +87,15 @@ if ('loading' in HTMLImageElement.prototype) {
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
     document.body.appendChild(script);
 }
+
+// Load and render Markdown content on notes.html
+if (document.getElementById('markdown-content')) {
+    fetch('Resumen Control 3.md')
+        .then(response => response.text())
+        .then(markdown => {
+            const markdownContent = document.getElementById('markdown-content');
+            markdownContent.innerHTML = marked(markdown);
+            MathJax.typesetPromise();
+        })
+        .catch(error => console.error('Error loading Markdown:', error));
+}
