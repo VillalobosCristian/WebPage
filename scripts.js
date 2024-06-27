@@ -27,6 +27,8 @@ if (storedTheme) {
     setTheme(storedTheme);
 } else if (prefersDarkScheme.matches) {
     setTheme('dark');
+} else {
+    setTheme('light');
 }
 
 toggleButton.addEventListener('click', () => {
@@ -62,7 +64,7 @@ const typingDelay = 75;
 let typingIndex = 0;
 
 function typeText() {
-    if (typingIndex < typingText.length) {
+    if (typingElement && typingIndex < typingText.length) {
         typingElement.innerHTML += typingText.charAt(typingIndex);
         typingIndex++;
         setTimeout(typeText, typingDelay);
@@ -73,7 +75,10 @@ document.addEventListener('DOMContentLoaded', typeText);
 
 // Dynamic year in footer
 const currentYear = new Date().getFullYear();
-document.querySelector('footer p span').textContent = currentYear;
+const footerYearSpan = document.querySelector('footer p span');
+if (footerYearSpan) {
+    footerYearSpan.textContent = currentYear;
+}
 
 // Lazy loading images
 if ('loading' in HTMLImageElement.prototype) {
@@ -89,13 +94,34 @@ if ('loading' in HTMLImageElement.prototype) {
 }
 
 // Load and render Markdown content on notes.html
-if (document.getElementById('markdown-content')) {
-    fetch('Resumen Control 3.md')
-        .then(response => response.text())
-        .then(markdown => {
-            const markdownContent = document.getElementById('markdown-content');
-            markdownContent.innerHTML = marked(markdown);
-            MathJax.typesetPromise();
-        })
-        .catch(error => console.error('Error loading Markdown:', error));
+function loadMarkdownContent() {
+    const markdownContent = document.getElementById('markdown-content');
+    if (markdownContent) {
+        fetch('Resumen Control 3.md')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(markdown => {
+                console.log("Markdown content loaded:", markdown.substring(0, 100) + "..."); // Log the first 100 characters
+                if (typeof marked !== 'function') {
+                    throw new Error('Marked library is not loaded or not a function');
+                }
+                markdownContent.innerHTML = marked(markdown);
+                if (typeof MathJax !== 'undefined') {
+                    MathJax.typesetPromise().catch((err) => console.error('MathJax error:', err));
+                }
+            })
+            .catch(error => {
+                console.error('Error loading or processing Markdown:', error);
+                markdownContent.innerHTML = `<p>Error loading or processing content: ${error.message}</p>`;
+                markdownContent.innerHTML += `<p>Please check the browser console for more details.</p>`;
+            });
+    } else {
+        console.error('Element with id "markdown-content" not found');
+    }
 }
+
+document.addEventListener('DOMContentLoaded', loadMarkdownContent);

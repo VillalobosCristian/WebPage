@@ -1,11 +1,3 @@
----
-tags: 
-date created: Tuesday, June 11th 2024, 7:38:45 pm
-date modified: Tuesday, June 11th 2024, 7:45:41 pm
----
-# Resumen Control 3
-
-
 ## Conceptos Básicos
 - **Flujo laminar:** Régimen de flujo donde las partículas del fluido se mueven en capas paralelas sin mezclarse.
 - **Número de Reynolds (Re):** Parámetro adimensional que caracteriza el tipo de flujo (laminar o turbulento). $Re = \frac{\rho u L}{\mu}$.
@@ -15,7 +7,7 @@ date modified: Tuesday, June 11th 2024, 7:45:41 pm
 ## Flujo Potential Y Flujo Irrotacional
 El flujo potential es un tipo de flujo irrotacional donde la velocidad del fluido puede derivarse de un potential escalar $\phi$, tal que $\mathbf{u} = \nabla \phi$. Este flujo cumple con la ecuación de Laplace:
 $$\nabla^2 \phi = 0$$
-### Algunos Resultados 
+### Algunos Resultados
 - **Flujo alrededor de una esfera:**
 $$\phi = -\frac{U R^3}{2r^2} \cos \theta + U r \cos \theta$$
 donde $U$ es la velocidad a infinito, $R$ es el radio de la esfera, $r$ es la distancia radial y $\theta$ es el ángulo polar.
@@ -40,7 +32,7 @@ $$\frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u} \cdot \nabla)\mathbf{u} =
 ### Soluciones Analíticas Para Flujos Laminares
 - **Flujo de Poiseuille:**
 $$u(r) = \frac{\Delta P}{4\mu L}(R^2 - r^2)$$
-![[Resumen Control 3 2024-06-11 19.49.14.excalidraw]] 
+![[Resumen Control 3 2024-06-11 19.49.14.excalidraw]]
 - **Flujo de Couette:![[Drawing 2024-06-11 19.52.25.excalidraw.svg|400]]
 
 $$u(y) = U\frac{y}{h}$$
@@ -52,7 +44,7 @@ Para flujo laminar incompresible sobre una placa plana, las ecuaciones de capa l
 $$\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} = 0$$
 $$u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} = \nu\frac{\partial^2 u}{\partial y^2}$$
 
-### Soluciones Autosimilares En Capa Límite: 
+### Soluciones Autosimilares En Capa Límite:
 La solución de Blasius utiliza la transformación de similaridad:
 $$\eta = y\sqrt{\frac{U}{\nu x}}, \quad f(\eta) = \frac{\psi}{\sqrt{\nu xU}}$$
 
