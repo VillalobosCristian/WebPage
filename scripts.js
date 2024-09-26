@@ -1,136 +1,16 @@
 // scripts.js
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Elements
-    const uploadForm = document.getElementById('upload-form');
-    const documentList = document.getElementById('document-list');
-    const backToTopButton = document.getElementById('back-to-top');
+    // ============================
+    // 1. Dark Mode Toggle
+    // ============================
     const darkModeToggle = document.getElementById('dark-mode-toggle');
     const body = document.body;
-    const formFeedback = document.getElementById('form-feedback');
-    const currentYearSpan = document.getElementById('current-year');
-    const navLinks = document.querySelectorAll('nav ul li a');
-    const curriculumIndexLinks = document.querySelectorAll('#curriculum-index a');
-    const notesContent = document.getElementById('notes-content');
 
-    // Update current year in footer
-    const currentYear = new Date().getFullYear();
-    if (currentYearSpan) {
-        currentYearSpan.textContent = currentYear;
-    }
-
-    // Function to fetch and display documents from the server
-    const fetchDocuments = async () => {
-        try {
-            const response = await fetch('/api/documents'); // Replace with your actual API endpoint
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const documents = await response.json();
-
-            // Clear existing list
-            documentList.innerHTML = '';
-
-            // Populate document list
-            documents.forEach(doc => {
-                const documentItem = document.createElement('div');
-                documentItem.classList.add('document-item');
-                documentItem.tabIndex = 0; // Make focusable for accessibility
-
-                const title = document.createElement('h3');
-                title.textContent = doc.type === 'tex' ? `LaTeX Document: ${doc.name}` : `Markdown File: ${doc.name}`;
-
-                const uploaderInfo = document.createElement('p');
-                uploaderInfo.textContent = `Uploaded by: ${doc.uploader}`;
-
-                const modifiedInfo = document.createElement('p');
-                const lastModified = new Date(doc.lastModified).toLocaleDateString();
-                modifiedInfo.textContent = `Last modified: ${lastModified}`;
-
-                documentItem.appendChild(title);
-                documentItem.appendChild(uploaderInfo);
-                documentItem.appendChild(modifiedInfo);
-
-                // Optional: Add click event to view/download the document
-                documentItem.addEventListener('click', () => {
-                    window.location.href = `/documents/${doc.id}`; // Replace with your actual document URL
-                });
-
-                documentList.appendChild(documentItem);
-            });
-        } catch (error) {
-            console.error('Error fetching documents:', error);
-            documentList.innerHTML = '<p>Error loading documents. Please try again later.</p>';
-        }
-    };
-
-    // Initial fetch of documents
-    fetchDocuments();
-
-    // Handle form submission for uploading documents
-    uploadForm && uploadForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const fileInput = document.getElementById('file-upload');
-        const file = fileInput.files[0];
-
-        if (!file) {
-            formFeedback.textContent = 'Please select a file to upload.';
-            formFeedback.className = 'form-message error';
-            fileInput.classList.add('error');
-            return;
-        }
-
-        // Reset feedback
-        formFeedback.textContent = '';
-        formFeedback.className = 'form-message';
-        fileInput.classList.remove('error');
-
-        const formData = new FormData();
-        formData.append('file-upload', file);
-
-        try {
-            const response = await fetch('/api/upload', { // Replace with your actual API endpoint
-                method: 'POST',
-                body: formData
-            });
-
-            if (response.ok) {
-                const result = await response.json();
-                formFeedback.textContent = 'File uploaded successfully!';
-                formFeedback.className = 'form-message success';
-                fileInput.classList.add('success');
-                uploadForm.reset();
-                fetchDocuments(); // Refresh the document list
-            } else {
-                const errorData = await response.json();
-                formFeedback.textContent = errorData.message || 'Failed to upload file.';
-                formFeedback.className = 'form-message error';
-                fileInput.classList.add('error');
-            }
-        } catch (error) {
-            console.error('Error uploading file:', error);
-            formFeedback.textContent = 'An error occurred while uploading the file.';
-            formFeedback.className = 'form-message error';
-            fileInput.classList.add('error');
-        }
-    });
-
-    // Back to Top Button Functionality
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            backToTopButton.style.display = 'block';
-        } else {
-            backToTopButton.style.display = 'none';
-        }
-    });
-
-    backToTopButton && backToTopButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Dark Mode Toggle Functionality
+    /**
+     * Sets the theme based on the provided parameter.
+     * @param {string} theme - The theme to set ('dark' or 'light').
+     */
     function setTheme(theme) {
         if (theme === 'dark') {
             body.classList.add('dark-mode');
@@ -142,24 +22,37 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('theme', theme);
     }
 
-    // Check for saved theme preference on load
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        setTheme(savedTheme);
-    } else {
-        // If no preference, use system preference
-        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-        setTheme(prefersDarkScheme.matches ? 'dark' : 'light');
+    /**
+     * Initializes the theme based on user preference or system settings.
+     */
+    function initializeTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else {
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            setTheme(prefersDarkScheme.matches ? 'dark' : 'light');
+        }
     }
 
-    darkModeToggle.addEventListener('click', () => {
-        const currentTheme = body.classList.contains('dark-mode') ? 'dark' : 'light';
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        setTheme(newTheme);
-    });
+    // Initialize theme on page load
+    initializeTheme();
 
-    // Smooth scrolling for internal links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    // Toggle theme on button click
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', () => {
+            const currentTheme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+    }
+
+    // ============================
+    // 2. Smooth Scrolling for Internal Links
+    // ============================
+    const internalLinks = document.querySelectorAll('a[href^="#"]');
+
+    internalLinks.forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
@@ -172,9 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Active Link Highlighting in Horizontal Index
+    // ============================
+    // 3. Active Link Highlighting
+    // ============================
     const sections = document.querySelectorAll('section');
-    const curriculumIndexLinks = document.querySelectorAll('#curriculum-index a');
+    const navLinks = document.querySelectorAll('nav ul li a');
 
     window.addEventListener('scroll', () => {
         let current = '';
@@ -186,35 +81,88 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        curriculumIndexLinks.forEach(link => {
+        navLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
+            // Check if link href matches the current section id or page
+            if (link.getAttribute('href') === `#${current}` || link.getAttribute('href') === `${current}.html`) {
                 link.classList.add('active');
             }
         });
     });
 
-    // Fetch and Render Physics Notes in curriculum.html
-    if (notesContent) {
-        async function loadPhysicsNotes() {
-            try {
-                const response = await fetch('Resumen Control 3.md'); // Path to your Markdown file
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const markdown = await response.text();
-                const htmlContent = marked(markdown);
-                notesContent.innerHTML = htmlContent;
-                if (typeof MathJax !== 'undefined') {
-                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, notesContent]);
-                }
-            } catch (error) {
-                console.error('Error loading or processing Markdown:', error);
-                notesContent.innerHTML = `<p>Error loading notes: ${error.message}</p>`;
-            }
-        }
+    // ============================
+    // 4. Back to Top Button
+    // ============================
+    const backToTopButton = document.getElementById('back-to-top');
 
-        // Call the function to load notes
+    if (backToTopButton) {
+        // Show or hide the button based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        // Scroll smoothly to the top when the button is clicked
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // ============================
+    // 5. Fetch and Render Markdown Notes (For notes.html)
+    // ============================
+    const notesContent = document.getElementById('notes-content');
+
+    /**
+     * Fetches a Markdown file and renders it as HTML.
+     * @param {string} fileName - The name of the Markdown file to fetch.
+     */
+    async function loadPhysicsNotes(fileName = 'Resumen-Control-3.md') {
+        if (!notesContent) return; // Exit if the element doesn't exist
+
+        try {
+            const response = await fetch(fileName);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const markdown = await response.text();
+            const htmlContent = marked(markdown);
+            notesContent.innerHTML = htmlContent;
+
+            // If MathJax is loaded, re-render the equations
+            if (typeof MathJax !== 'undefined') {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, notesContent]);
+            }
+        } catch (error) {
+            console.error('Error loading or processing Markdown:', error);
+            notesContent.innerHTML = `<p>Error loading notes: ${error.message}</p>`;
+        }
+    }
+
+    // Determine the current page and load notes if on notes.html
+    const currentPage = window.location.pathname.split("/").pop();
+
+    if (currentPage === 'notes.html') {
         loadPhysicsNotes();
     }
+
+    // ============================
+    // 6. Initialize Current Year in Footer
+    // ============================
+    const currentYearSpan = document.getElementById('current-year');
+
+    if (currentYearSpan) {
+        const currentYear = new Date().getFullYear();
+        currentYearSpan.textContent = currentYear;
+    }
+
+    // ============================
+    // 7. Optional: Handle Additional Features
+    // ============================
+    // If you have additional features like file uploads or dynamic document lists,
+    // ensure to check for the existence of their corresponding elements before initializing.
 });

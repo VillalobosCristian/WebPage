@@ -154,30 +154,54 @@ ul li::before {
     left: 0;
 }
 
-/* Horizontal Index (Table of Contents) Styles */
-#curriculum-index {
-    background-color: #f8f9fa;
-    border-radius: 5px;
-    padding: 10px 0;
-}
-
-#curriculum-index .nav-link {
-    color: var(--primary-color);
-    font-weight: bold;
-    transition: color var(--transition-speed) ease, background-color var(--transition-speed) ease;
-}
-
-#curriculum-index .nav-link:hover {
-    color: white;
-    background-color: var(--primary-color);
-    border-radius: 5px;
-}
-
 /* Notes Content Styling */
 #notes-content {
     max-height: 800px;
     /* Adjust as needed */
     overflow-y: auto;
+    padding: 1rem;
+    background-color: #f9f9f9;
+}
+
+body.dark-mode #notes-content {
+    background-color: #3c3c3c;
+    color: #f1f1f1;
+}
+
+/* Customize Markdown Elements */
+#notes-content h1,
+#notes-content h2,
+#notes-content h3 {
+    color: var(--primary-color);
+}
+
+#notes-content p,
+#notes-content ul,
+#notes-content ol {
+    line-height: 1.6;
+}
+
+#notes-content code {
+    background-color: #eaeaea;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+body.dark-mode #notes-content code {
+    background-color: #555;
+    color: #f1f1f1;
+}
+
+#notes-content pre {
+    background-color: #eaeaea;
+    padding: 1rem;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+body.dark-mode #notes-content pre {
+    background-color: #555;
+    color: #f1f1f1;
 }
 
 /* Footer Styles */
@@ -283,18 +307,9 @@ footer ul li a:hover {
         margin: 10px 0;
     }
 
-    #curriculum-index {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #curriculum-index .nav-link {
-        margin-bottom: 10px;
-    }
-
-    #curriculum .about-image {
-        width: 100%;
-        max-width: 300px;
+    #notes-content {
+        max-height: 600px;
+        /* Adjust as needed for smaller screens */
     }
 
     footer ul li {
@@ -314,16 +329,8 @@ footer ul li a:hover {
 /* Accessibility Focus Styles */
 a:focus,
 button:focus,
-input:focus {
+input:focus,
+textarea:focus {
     outline: 2px solid var(--accent-color);
     outline-offset: 2px;
-}
-
-/* Additional Enhancements */
-
-/* Hover Effects for Document Items on Smaller Screens */
-@media (max-width: 768px) {
-    .document-item:hover {
-        transform: translateY(-5px) rotate(0deg);
-    }
 }

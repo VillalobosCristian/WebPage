@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,104 +6,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cristian Villalobos - Physicist</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <!-- Header Section -->
     <header class="bg-primary text-white py-3">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
+                <!-- Logo or Name -->
                 <h1 class="h3 mb-0">Cristian Villalobos</h1>
+                <!-- Navigation Menu -->
                 <nav>
                     <ul class="nav">
-                        <li class="nav-item"><a class="nav-link text-white" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link text-white" href="curriculum.html">Curriculum</a></li>
                         <li class="nav-item"><a class="nav-link text-white" href="#publications">Publications</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="notes.html">Notes</a></li>
                         <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="notes.html">Notes</a></li>
                     </ul>
                 </nav>
-                <button id="dark-mode-toggle" class="btn btn-outline-light"><i class="fas fa-moon"></i></button>
+                <!-- Dark Mode Toggle Button -->
+                <button id="dark-mode-toggle" class="btn btn-outline-light" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
         </div>
     </header>
 
+    <!-- Main Content -->
     <main>
-        <section id="hero" class="text-center py-5 bg-light">
-            <div class="container">
-                <img src="profile.jpg" alt="Profile Image of Cristian Villalobos" class="rounded-circle mb-3"
-                    width="150" height="150" loading="lazy">
-                <h2 class="h3">Cristian Villalobos</h2>
-                <p id="typing-effect">Physicist specializing in bacterial suspension dynamics</p>
+        <!-- Hero Section -->
+        <section id="hero" class="py-5 bg-light">
+            <div class="container text-center">
+                <!-- Professional Photo -->
+                <img src="path-to-your-photo.jpg" alt="Cristian Villalobos" class="rounded-circle mb-4" width="200"
+                    height="200">
+                <!-- Introduction Text -->
+                <h2 class="mb-3">Welcome to My Professional Portfolio</h2>
+                <p class="lead">I am Cristian Villalobos, a physicist specializing in bacterial suspension dynamics and
+                    confined space phenomena. Explore my work, publications, and notes below.</p>
+                <!-- Call to Action Buttons -->
+                <a href="curriculum.html" class="btn btn-primary me-2">View Curriculum</a>
+                <a href="notes.html" class="btn btn-secondary">Explore Notes</a>
             </div>
         </section>
 
-        <section id="about" class="py-5">
-            <div class="container">
-                <h2 class="text-center mb-4">About Me</h2>
-                <p>I'm Cristian Villalobos, a physicist specializing in bacterial suspension dynamics. I love exploring
-                    the complexities of active matter systems and their applications in various fields.</p>
-            </div>
-        </section>
-
-        <section id="publications" class="py-5 bg-light">
+        <!-- Publications Section -->
+        <section id="publications" class="py-5">
             <div class="container">
                 <h2 class="text-center mb-4">Publications</h2>
                 <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <div class="card">
+                    <!-- Publication Item 1 -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
                             <div class="card-body">
-                                <h3 class="card-title h5">"Flow Fluctuations in Bacterial Suspensions"</h3>
-                                <p class="card-text">Granular Matter (2022)</p>
-                                <a href="https://link.springer.com/article/10.1007/s10035-022-01221-x" target="_blank"
-                                    class="btn btn-primary">Read More</a>
+                                <h5 class="card-title">Title of Publication 1</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Journal Name, Year</h6>
+                                <p class="card-text">A brief summary or abstract of the publication goes here.</p>
+                                <a href="#" class="card-link">Read More</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <div class="card">
+                    <!-- Publication Item 2 -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
                             <div class="card-body">
-                                <h3 class="card-title h5">"Recovering the Activity Parameters of an Active Fluid
-                                    Confined in a Sphere"</h3>
-                                <p class="card-text">Under review</p>
-                                <a href="https://arxiv.org/pdf/2403.11933" target="_blank" class="btn btn-primary">Read
-                                    Preprint</a>
+                                <h5 class="card-title">Title of Publication 2</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Conference Proceedings, Year</h6>
+                                <p class="card-text">A brief summary or abstract of the publication goes here.</p>
+                                <a href="#" class="card-link">Read More</a>
                             </div>
                         </div>
                     </div>
+                    <!-- Add more publications as needed -->
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="py-5">
+        <!-- Contact Section -->
+        <section id="contact" class="py-5 bg-light">
             <div class="container">
-                <h2 class="text-center mb-4">Contact</h2>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-envelope fa-2x me-3"></i>
-                            <a href="mailto:cristian.villalobos@ug.uchile.cl">cristian.villalobos@ug.uchile.cl</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-phone fa-2x me-3"></i>
-                            <a href="tel:+56988274915">(+569) 88274915</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-map-marker-alt fa-2x me-3"></i>
-                            <span>Santiago, Chile</span>
-                        </div>
+                <h2 class="text-center mb-4">Contact Me</h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <!-- Contact Form -->
+                        <form id="contact-form">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="name" name="name" required
+                                    aria-required="true">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="email" name="email" required
+                                    aria-required="true">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message <span
+                                        class="text-danger">*</span></label>
+                                <textarea class="form-control" id="message" name="message" rows="5" required
+                                    aria-required="true"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                            <div id="form-feedback" class="form-message mt-3"></div>
+                        </form>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer Section -->
     <footer class="bg-secondary text-white text-center py-3">
         <div class="container">
             <p>&copy; <span id="current-year"></span> Cristian Villalobos</p>
@@ -118,7 +138,14 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Scripts -->
     <script src="scripts.js"></script>
 </body>
 
