@@ -1,33 +1,52 @@
 /* styles.css */
 
-/* CSS Variables for Theme Colors */
+/* ============================
+   1. CSS Variables for Theme Colors
+   ============================ */
 :root {
     --primary-color: #3498db;
+    /* Blue */
     --secondary-color: #2c3e50;
+    /* Dark Blue */
     --background-color: #ecf0f1;
+    /* Light Gray */
     --text-color: #34495e;
+    /* Dark Gray */
     --accent-color: #e74c3c;
+    /* Red */
     --transition-speed: 0.3s;
+    /* Transition Duration */
 }
 
 /* Dark Mode Variables */
 :root.dark-mode {
     --primary-color: #2980b9;
+    /* Darker Blue */
     --secondary-color: #34495e;
+    /* Darker Dark Blue */
     --background-color: #2c3e50;
+    /* Dark Blue */
     --text-color: #ecf0f1;
+    /* Light Gray */
     --accent-color: #e74c3c;
+    /* Red (unchanged) */
 }
 
-/* Global Styles */
+/* ============================
+   2. Global Styles
+   ============================ */
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Roboto', Arial, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background-color: var(--background-color);
     margin: 0;
     padding: 0;
-    transition: background 0.5s ease, color 0.5s ease;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .container {
@@ -37,7 +56,9 @@ body {
     padding: 0 15px;
 }
 
-/* Header Styles */
+/* ============================
+   3. Header and Navigation Styles
+   ============================ */
 header {
     background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
     padding: 1.5rem 0;
@@ -54,6 +75,8 @@ nav {
 .nav ul {
     display: flex;
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .nav ul li {
@@ -64,6 +87,7 @@ nav {
     color: white;
     text-decoration: none;
     position: relative;
+    padding: 5px 0;
     transition: color var(--transition-speed) ease;
 }
 
@@ -79,7 +103,8 @@ nav {
     transition: transform var(--transition-speed) ease;
 }
 
-.nav ul li a:hover::after {
+.nav ul li a:hover::after,
+.nav ul li a.active::after {
     transform: scaleX(1);
 }
 
@@ -87,6 +112,7 @@ nav {
     color: var(--secondary-color);
 }
 
+/* Dark Mode Toggle Button */
 #dark-mode-toggle {
     background: var(--primary-color);
     color: white;
@@ -94,7 +120,7 @@ nav {
     border-radius: 20px;
     padding: 10px 20px;
     cursor: pointer;
-    transition: background var(--transition-speed) ease;
+    transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
     font-size: 0.9rem;
 }
 
@@ -102,7 +128,9 @@ nav {
     background: var(--secondary-color);
 }
 
-/* Main Content Styles */
+/* ============================
+   4. Main Content Styles
+   ============================ */
 main {
     padding: 2rem 0;
 }
@@ -121,57 +149,102 @@ section:hover {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
-h2 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: var(--secondary-color);
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-h3 {
-    font-size: 1.75rem;
-    margin-bottom: 0.75rem;
-    color: var(--primary-color);
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 10px;
-    margin-bottom: 15px;
 }
 
 p,
-ul {
+ul,
+ol {
     font-size: 1rem;
+    color: var(--text-color);
 }
 
-ul li {
+ul li,
+ol li {
     margin-bottom: 10px;
     padding-left: 20px;
     position: relative;
 }
 
-ul li::before {
+ul li::before,
+ol li::before {
     content: '▹';
+    /* Bullet Symbol */
     color: var(--primary-color);
     position: absolute;
     left: 0;
 }
 
-/* Notes Content Styling */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* ============================
+   5. Notes Section Styles
+   ============================ */
+
+/* Notes List */
+#notes-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#notes-list li {
+    margin-bottom: 10px;
+}
+
+.note-item {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+.note-item:hover,
+.note-item.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Notes Content */
 #notes-content {
     max-height: 800px;
     /* Adjust as needed */
     overflow-y: auto;
     padding: 1rem;
     background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 body.dark-mode #notes-content {
     background-color: #3c3c3c;
     color: #f1f1f1;
+    border-color: #555;
 }
 
 /* Customize Markdown Elements */
 #notes-content h1,
 #notes-content h2,
-#notes-content h3 {
+#notes-content h3,
+#notes-content h4,
+#notes-content h5,
+#notes-content h6 {
     color: var(--primary-color);
 }
 
@@ -185,6 +258,7 @@ body.dark-mode #notes-content {
     background-color: #eaeaea;
     padding: 2px 4px;
     border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 body.dark-mode #notes-content code {
@@ -197,6 +271,7 @@ body.dark-mode #notes-content code {
     padding: 1rem;
     border-radius: 5px;
     overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 body.dark-mode #notes-content pre {
@@ -204,19 +279,21 @@ body.dark-mode #notes-content pre {
     color: #f1f1f1;
 }
 
-/* Footer Styles */
+/* ============================
+   6. Footer Styles
+   ============================ */
 footer {
     background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
     padding: 2rem 0;
     color: white;
     text-align: center;
-    margin-top: 2rem;
     transition: background 0.5s ease;
 }
 
 footer ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 footer ul li {
@@ -248,10 +325,13 @@ footer ul li a:hover {
     color: var(--accent-color);
 }
 
-/* Back to Top Button Styles */
+/* ============================
+   7. Back to Top Button Styles
+   ============================ */
 #back-to-top {
     background-color: var(--primary-color);
     color: white;
+    border: none;
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -264,6 +344,7 @@ footer ul li a:hover {
     display: none;
     z-index: 1000;
     font-size: 1.5rem;
+    cursor: pointer;
 }
 
 #back-to-top:hover {
@@ -271,22 +352,32 @@ footer ul li a:hover {
     transform: scale(1.1);
 }
 
-/* Keyframes Animation for Logo */
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
-
-    100% {
-        transform: scale(1);
-    }
+/* ============================
+   8. Notes List Button (Optional for Multiple Notes)
+   ============================ */
+.note-btn {
+    margin: 0 5px;
 }
 
-/* Responsive Design */
+.note-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* ============================
+   9. Accessibility Focus Styles
+   ============================ */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* ============================
+   10. Responsive Design
+   ============================ */
 @media (max-width: 768px) {
     .container {
         width: 95%;
@@ -297,14 +388,23 @@ footer ul li a:hover {
         align-items: flex-start;
     }
 
-    nav ul {
+    .nav ul {
         margin-top: 1rem;
         flex-direction: column;
         width: 100%;
     }
 
-    nav ul li {
+    .nav ul li {
         margin: 10px 0;
+    }
+
+    #notes-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #notes-list li {
+        margin-bottom: 10px;
     }
 
     #notes-content {
@@ -326,11 +426,53 @@ footer ul li a:hover {
     }
 }
 
-/* Accessibility Focus Styles */
-a:focus,
-button:focus,
-input:focus,
-textarea:focus {
-    outline: 2px solid var(--accent-color);
-    outline-offset: 2px;
+/* ============================
+   11. Additional Enhancements
+   ============================ */
+
+/* Smooth Transition for Theme Changes */
+body,
+header,
+footer,
+section,
+#notes-content {
+    transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Notes List Styling */
+#notes-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#notes-list li {
+    margin-bottom: 10px;
+}
+
+.note-item {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+.note-item:hover,
+.note-item.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Pagination (If Needed) */
+.pagination {
+    justify-content: center;
+}
+
+.pagination li a {
+    color: var(--primary-color);
+}
+
+.pagination li a:hover {
+    color: var(--secondary-color);
 }

@@ -14,6 +14,17 @@
     <link rel="stylesheet" href="styles.css">
     <!-- Marked.js v3.0.8 for Markdown Parsing -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/3.0.8/marked.min.js"></script>
+    <!-- MathJax Configuration -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [['$','$'], ["\\(","\\)"]],
+          displayMath: [['$$','$$'], ["\\[","\\]"]],
+          processEscapes: true
+        },
+        "HTML-CSS": { preferredFont: "TeX" }
+      });
+    </script>
     <!-- MathJax for LaTeX Rendering -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"
         async></script>
@@ -50,21 +61,15 @@
         <section id="notes" class="py-5">
             <div class="container">
                 <h2 class="text-center mb-4">Physics Notes</h2>
-                <div class="row">
-                    <!-- Notes List -->
-                    <div class="col-md-4 mb-4">
-                        <ul id="notes-list" class="list-group">
-                            <!-- Notes will be dynamically loaded here -->
-                            <li class="list-group-item">Loading notes...</li>
-                        </ul>
-                    </div>
-                    <!-- Notes Content -->
-                    <div class="col-md-8 mb-4">
-                        <div id="notes-content" class="border rounded p-4">
-                            <!-- Note content will be dynamically loaded here -->
-                            <p>Select a note to view its content.</p>
-                        </div>
-                    </div>
+                <!-- Notes List -->
+                <ul id="notes-list" class="list-group mb-4">
+                    <!-- Notes will be dynamically populated here -->
+                    <li class="list-group-item">Loading notes...</li>
+                </ul>
+                <!-- Notes Content -->
+                <div id="notes-content" class="border rounded p-4">
+                    <!-- Selected note content will be dynamically loaded here -->
+                    <p>Select a note from the list to view its content.</p>
                 </div>
             </div>
         </section>
