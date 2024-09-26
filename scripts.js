@@ -1,127 +1,220 @@
-// Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
+// scripts.js
 
-// Dark mode toggle
-const toggleButton = document.getElementById('dark-mode-toggle');
-const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+document.addEventListener('DOMContentLoaded', () => {
+    // Elements
+    const uploadForm = document.getElementById('upload-form');
+    const documentList = document.getElementById('document-list');
+    const backToTopButton = document.getElementById('back-to-top');
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const body = document.body;
+    const formFeedback = document.getElementById('form-feedback');
+    const currentYearSpan = document.getElementById('current-year');
+    const navLinks = document.querySelectorAll('nav ul li a');
+    const curriculumIndexLinks = document.querySelectorAll('#curriculum-index a');
+    const notesContent = document.getElementById('notes-content');
 
-function setTheme(theme) {
-    document.body.classList.toggle('dark-mode', theme === 'dark');
-    localStorage.setItem('theme', theme);
-    toggleButton.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-}
-
-const storedTheme = localStorage.getItem('theme');
-if (storedTheme) {
-    setTheme(storedTheme);
-} else if (prefersDarkScheme.matches) {
-    setTheme('dark');
-} else {
-    setTheme('light');
-}
-
-toggleButton.addEventListener('click', () => {
-    const newTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
-    setTheme(newTheme);
-});
-
-// Animate sections on scroll
-const sections = document.querySelectorAll('section');
-const observerOptions = {
-    rootMargin: '0px',
-    threshold: 0.1,
-};
-
-const observerCallback = (entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-            observer.unobserve(entry.target);
-        }
-    });
-};
-
-const observer = new IntersectionObserver(observerCallback, observerOptions);
-sections.forEach(section => {
-    observer.observe(section);
-});
-
-// Typing effect
-const typingElement = document.getElementById('typing-effect');
-const typingText = 'Physicist specializing in bacterial suspension dynamics';
-const typingDelay = 75;
-let typingIndex = 0;
-
-function typeText() {
-    if (typingElement && typingIndex < typingText.length) {
-        typingElement.innerHTML += typingText.charAt(typingIndex);
-        typingIndex++;
-        setTimeout(typeText, typingDelay);
+    // Update current year in footer
+    const currentYear = new Date().getFullYear();
+    if (currentYearSpan) {
+        currentYearSpan.textContent = currentYear;
     }
-}
 
-document.addEventListener('DOMContentLoaded', typeText);
+    // Function to fetch and display documents from the server
+    const fetchDocuments = async () => {
+        try {
+            const response = await fetch('/api/documents'); // Replace with your actual API endpoint
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const documents = await response.json();
 
-// Dynamic year in footer
-const currentYear = new Date().getFullYear();
-const footerYearSpan = document.querySelector('footer p span');
-if (footerYearSpan) {
-    footerYearSpan.textContent = currentYear;
-}
+            // Clear existing list
+            documentList.innerHTML = '';
 
-// Lazy loading images
-if ('loading' in HTMLImageElement.prototype) {
-    const images = document.querySelectorAll('img[loading="lazy"]');
-    images.forEach(img => {
-        img.src = img.dataset.src;
+            // Populate document list
+            documents.forEach(doc => {
+                const documentItem = document.createElement('div');
+                documentItem.classList.add('document-item');
+                documentItem.tabIndex = 0; // Make focusable for accessibility
+
+                const title = document.createElement('h3');
+                title.textContent = doc.type === 'tex' ? `LaTeX Document: ${doc.name}` : `Markdown File: ${doc.name}`;
+
+                const uploaderInfo = document.createElement('p');
+                uploaderInfo.textContent = `Uploaded by: ${doc.uploader}`;
+
+                const modifiedInfo = document.createElement('p');
+                const lastModified = new Date(doc.lastModified).toLocaleDateString();
+                modifiedInfo.textContent = `Last modified: ${lastModified}`;
+
+                documentItem.appendChild(title);
+                documentItem.appendChild(uploaderInfo);
+                documentItem.appendChild(modifiedInfo);
+
+                // Optional: Add click event to view/download the document
+                documentItem.addEventListener('click', () => {
+                    window.location.href = `/documents/${doc.id}`; // Replace with your actual document URL
+                });
+
+                documentList.appendChild(documentItem);
+            });
+        } catch (error) {
+            console.error('Error fetching documents:', error);
+            documentList.innerHTML = '<p>Error loading documents. Please try again later.</p>';
+        }
+    };
+
+    // Initial fetch of documents
+    fetchDocuments();
+
+    // Handle form submission for uploading documents
+    uploadForm && uploadForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const fileInput = document.getElementById('file-upload');
+        const file = fileInput.files[0];
+
+        if (!file) {
+            formFeedback.textContent = 'Please select a file to upload.';
+            formFeedback.className = 'form-message error';
+            fileInput.classList.add('error');
+            return;
+        }
+
+        // Reset feedback
+        formFeedback.textContent = '';
+        formFeedback.className = 'form-message';
+        fileInput.classList.remove('error');
+
+        const formData = new FormData();
+        formData.append('file-upload', file);
+
+        try {
+            const response = await fetch('/api/upload', { // Replace with your actual API endpoint
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                formFeedback.textContent = 'File uploaded successfully!';
+                formFeedback.className = 'form-message success';
+                fileInput.classList.add('success');
+                uploadForm.reset();
+                fetchDocuments(); // Refresh the document list
+            } else {
+                const errorData = await response.json();
+                formFeedback.textContent = errorData.message || 'Failed to upload file.';
+                formFeedback.className = 'form-message error';
+                fileInput.classList.add('error');
+            }
+        } catch (error) {
+            console.error('Error uploading file:', error);
+            formFeedback.textContent = 'An error occurred while uploading the file.';
+            formFeedback.className = 'form-message error';
+            fileInput.classList.add('error');
+        }
     });
-} else {
-    // Fallback for browsers that don't support lazy loading
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
-    document.body.appendChild(script);
-}
 
-// Load and render Markdown content on notes.html
-function loadMarkdownContent() {
-    const markdownContent = document.getElementById('markdown-content');
-    if (markdownContent) {
-        fetch('Resumen Control 3.md')
-            .then(response => {
+    // Back to Top Button Functionality
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopButton.style.display = 'block';
+        } else {
+            backToTopButton.style.display = 'none';
+        }
+    });
+
+    backToTopButton && backToTopButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Dark Mode Toggle Functionality
+    function setTheme(theme) {
+        if (theme === 'dark') {
+            body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            body.classList.remove('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+        localStorage.setItem('theme', theme);
+    }
+
+    // Check for saved theme preference on load
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else {
+        // If no preference, use system preference
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        setTheme(prefersDarkScheme.matches ? 'dark' : 'light');
+    }
+
+    darkModeToggle.addEventListener('click', () => {
+        const currentTheme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+    });
+
+    // Smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Active Link Highlighting in Horizontal Index
+    const sections = document.querySelectorAll('section');
+    const curriculumIndexLinks = document.querySelectorAll('#curriculum-index a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 150; // Adjust based on header height
+            if (pageYOffset >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        curriculumIndexLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // Fetch and Render Physics Notes in curriculum.html
+    if (notesContent) {
+        async function loadPhysicsNotes() {
+            try {
+                const response = await fetch('Resumen Control 3.md'); // Path to your Markdown file
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                return response.text();
-            })
-            .then(markdown => {
-                console.log("Markdown content loaded:", markdown.substring(0, 100) + "..."); // Log the first 100 characters
-                if (typeof marked !== 'function') {
-                    throw new Error('Marked library is not loaded or not a function');
-                }
-                markdownContent.innerHTML = marked(markdown);
+                const markdown = await response.text();
+                const htmlContent = marked(markdown);
+                notesContent.innerHTML = htmlContent;
                 if (typeof MathJax !== 'undefined') {
-                    MathJax.typesetPromise().catch((err) => console.error('MathJax error:', err));
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub, notesContent]);
                 }
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error('Error loading or processing Markdown:', error);
-                markdownContent.innerHTML = `<p>Error loading or processing content: ${error.message}</p>`;
-                markdownContent.innerHTML += `<p>Please check the browser console for more details.</p>`;
-            });
-    } else {
-        console.error('Element with id "markdown-content" not found');
-    }
-}
+                notesContent.innerHTML = `<p>Error loading notes: ${error.message}</p>`;
+            }
+        }
 
-document.addEventListener('DOMContentLoaded', loadMarkdownContent);
+        // Call the function to load notes
+        loadPhysicsNotes();
+    }
+});
