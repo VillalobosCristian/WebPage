@@ -113,19 +113,79 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================
-    // 5. Fetch and Render Markdown Notes (For notes.html)
+    // 5. Fetch and Display Notes List (For notes.html)
     // ============================
+    const notesList = document.getElementById('notes-list');
     const notesContent = document.getElementById('notes-content');
 
     /**
-     * Fetches a Markdown file and renders it as HTML.
-     * @param {string} fileName - The name of the Markdown file to fetch.
+     * Fetches the list of notes from notes.json and populates the notes list.
      */
-    async function loadPhysicsNotes(fileName = 'Resumen-Control-3.md') {
+    async function loadNotesList() {
+        if (!notesList) return; // Exit if the element doesn't exist
+
+        try {
+            const response = await fetch('notes.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const notes = await response.json();
+            populateNotesList(notes);
+        } catch (error) {
+            console.error('Error loading notes list:', error);
+            notesList.innerHTML = '<li class="list-group-item">Error loading notes list.</li>';
+        }
+    }
+
+    /**
+     * Populates the notes list with fetched notes.
+     * @param {Array} notes - An array of note objects.
+     */
+    function populateNotesList(notes) {
+        if (!Array.isArray(notes) || notes.length === 0) {
+            notesList.innerHTML = '<li class="list-group-item">No notes available.</li>';
+            return;
+        }
+
+        notesList.innerHTML = ''; // Clear existing list
+
+        notes.forEach(note => {
+            const listItem = document.createElement('li');
+            listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
+
+            const noteInfo = document.createElement('div');
+            const noteTitle = document.createElement('h5');
+            noteTitle.textContent = note.title;
+            const noteDescription = document.createElement('p');
+            noteDescription.textContent = note.description;
+            noteInfo.appendChild(noteTitle);
+            noteInfo.appendChild(noteDescription);
+
+            const viewButton = document.createElement('button');
+            viewButton.classList.add('btn', 'btn-primary', 'btn-sm');
+            viewButton.textContent = 'View';
+            viewButton.setAttribute('data-file', note.filename);
+            viewButton.addEventListener('click', () => {
+                loadPhysicsNotes(`notes/${note.filename}`);
+            });
+
+            listItem.appendChild(noteInfo);
+            listItem.appendChild(viewButton);
+
+            notesList.appendChild(listItem);
+        });
+    }
+
+    /**
+     * Fetches a Markdown file and renders it as HTML.
+     * @param {string} filePath - The path to the Markdown file.
+     */
+    async function loadPhysicsNotes(filePath) {
         if (!notesContent) return; // Exit if the element doesn't exist
 
         try {
-            const response = await fetch(fileName);
+            notesContent.innerHTML = '<p>Loading notes...</p>';
+            const response = await fetch(filePath);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -143,11 +203,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Determine the current page and load notes if on notes.html
+    // Load notes list if on notes.html
     const currentPage = window.location.pathname.split("/").pop();
 
     if (currentPage === 'notes.html') {
-        loadPhysicsNotes();
+        loadNotesList();
     }
 
     // ============================

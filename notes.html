@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="styles.css">
-    <!-- Marked.js for Markdown Parsing -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Marked.js v3.0.8 for Markdown Parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/3.0.8/marked.min.js"></script>
     <!-- MathJax for LaTeX Rendering -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"
         async></script>
@@ -50,18 +50,21 @@
         <section id="notes" class="py-5">
             <div class="container">
                 <h2 class="text-center mb-4">Physics Notes</h2>
-                <!-- Note Navigation (Optional) -->
-                <!--
-                <div class="mb-4 text-center">
-                    <button class="btn btn-secondary me-2 note-btn" data-file="Resumen-Control-3.md">Resumen Control 3</button>
-                    <button class="btn btn-secondary me-2 note-btn" data-file="Another-Note.md">Another Note</button>
-                    <!-- Add more buttons as needed -->
-                <!-- </div>
-                -->
-                <!-- Notes Content -->
-                <div id="notes-content" class="border rounded p-4">
-                    <!-- Notes will be dynamically loaded here -->
-                    <p>Loading notes...</p>
+                <div class="row">
+                    <!-- Notes List -->
+                    <div class="col-md-4 mb-4">
+                        <ul id="notes-list" class="list-group">
+                            <!-- Notes will be dynamically loaded here -->
+                            <li class="list-group-item">Loading notes...</li>
+                        </ul>
+                    </div>
+                    <!-- Notes Content -->
+                    <div class="col-md-8 mb-4">
+                        <div id="notes-content" class="border rounded p-4">
+                            <!-- Note content will be dynamically loaded here -->
+                            <p>Select a note to view its content.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
