@@ -6,29 +6,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cristian Villalobos - Physicist</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&display=swap"
+        rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="styles.css">
-    
+    <!-- Marked.js for Markdown Parsing (if needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/3.0.8/marked.min.js"></script>
+    <!-- MathJax for LaTeX Rendering (if needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"
+        async></script>
 </head>
+
 <body>
     <!-- Header Section -->
-    <header class="bg-primary text-white py-3">
+    <header class="bg-primary text-white py-4">
         <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <!-- Logo or Name -->
-                <h1 class="h3 mb-0">Cristian Villalobos</h1>
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+                <!-- Logo -->
+                <div class="mb-3 mb-md-0">
+                    <img src="path-to-your-logo.png" alt="Lab Logo" width="100" height="100" class="img-fluid">
+                </div>
                 <!-- Navigation Menu -->
                 <nav>
                     <ul class="nav">
-                        <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link text-white active" href="index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link text-white" href="curriculum.html">Curriculum</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#publications">Publications</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="publications.html">Publications</a>
+                        </li>
                         <li class="nav-item"><a class="nav-link text-white" href="notes.html">Notes</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
                     </ul>
                 </nav>
                 <!-- Dark Mode Toggle Button -->
@@ -36,94 +47,192 @@
                     <i class="fas fa-moon"></i>
                 </button>
             </div>
+            <!-- Detailed Contact Information -->
+            <div class="mt-4">
+                <p><i class="fas fa-university"></i> Instituto de Física, Pontificia Universidad Católica de Valparaíso
+                </p>
+                <p><i class="fas fa-map-marker-alt"></i> Av. Universidad 330 (Curauma), Valparaíso, Chile.</p>
+                <p><i class="fas fa-phone"></i> Office: +56 32 2274889</p>
+                <p><i class="fas fa-phone-alt"></i> Lab: +56 32 2274987</p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:cristian.villalobos@ug.uchile.cl"
+                        class="text-white">cristian.villalobos@ug.uchile.cl</a></p>
+                <p><i class="fas fa-flask"></i> Interests: Bacterial Suspensions, Confined Dynamics, Nonlinear Physics
+                </p>
+                <!-- Social Media Links -->
+                <p>
+                    <a href="https://github.com/VillalobosCristian" target="_blank" class="text-white me-3"
+                        aria-label="GitHub">
+                        <i class="fab fa-github fa-lg"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="text-white"
+                        aria-label="LinkedIn">
+                        <i class="fab fa-linkedin fa-lg"></i>
+                    </a>
+                </p>
+            </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <section id="hero" class="py-5 bg-light">
-            <div class="container text-center">
-                <!-- Professional Photo -->
-                <img src="path-to-your-photo.jpg" alt="Cristian Villalobos" class="rounded-circle mb-4" width="200"
-                    height="200">
-                <!-- Introduction Text -->
-                <h2 class="mb-3">Welcome to My Professional Portfolio</h2>
-                <p class="lead">I am Cristian Villalobos, a physicist specializing in bacterial suspension dynamics and
-                    confined space phenomena. Explore my work, publications, and notes below.</p>
-                <!-- Call to Action Buttons -->
-                <a href="curriculum.html" class="btn btn-primary me-2">View Curriculum</a>
-                <a href="notes.html" class="btn btn-secondary">Explore Notes</a>
-            </div>
-        </section>
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container text-center">
+            <!-- Professional Photo -->
+            <img src="path-to-your-photo.jpg" alt="Cristian Villalobos" class="rounded-circle mb-4" width="200"
+                height="200">
+            <!-- Introduction Text -->
+            <h2>Research</h2>
+            <p class="lead">I am Cristian Villalobos, a physicist specializing in bacterial suspension dynamics and
+                confined space phenomena. Explore my work, publications, and notes below.</p>
+            <!-- Call to Action Buttons -->
+            <a href="curriculum.html" class="btn btn-primary me-2">View Curriculum</a>
+            <a href="notes.html" class="btn btn-secondary">Explore Notes</a>
+        </div>
+    </section>
 
-        <!-- Publications Section -->
-        <section id="publications" class="py-5">
-            <div class="container">
-                <h2 class="text-center mb-4">Publications</h2>
-                <div class="row">
-                    <!-- Publication Item 1 -->
-                    <div class="col-md-6 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title">Title of Publication 1</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Journal Name, Year</h6>
-                                <p class="card-text">A brief summary or abstract of the publication goes here.</p>
-                                <a href="#" class="card-link">Read More</a>
+    <!-- Publications Section -->
+    <section id="publications">
+        <div class="container">
+            <h2 class="text-center mb-4">Publications</h2>
+            <div id="publications-list">
+                <!-- Publications will be dynamically loaded here -->
+                <p>Loading publications...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Research Section -->
+    <section id="current-research">
+        <div class="container">
+            <h2 class="text-center mb-4">Current Research</h2>
+            <div class="row">
+                <!-- Research Project 1 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title">Fluctuations and Dynamics of Passive Particles in Confined Bacterial
+                                Suspensions</h3>
+                            <p class="card-text">My research focuses on understanding the dynamics of passive particles
+                                immersed in active bacterial baths, particularly in spherical confinement. By combining
+                                experimental techniques and theoretical modeling, I aim to extract the properties of the
+                                bacterial bath and its effect on tracer motion, with implications for both fundamental
+                                physics and practical applications in soft matter and biophysics.</p>
+                            <img src="path-to-research-image1.jpg" alt="Bacterial Suspension Dynamics"
+                                class="img-fluid mb-3">
+                        </div>
+                    </div>
+                </div>
+                <!-- Research Project 2 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title">Analyzing Spatial Correlations in Bacterial Suspensions</h3>
+                            <p class="card-text">This project delves into spatial and temporal correlations between
+                                particle pairs within bacterial suspensions. By analyzing these interactions in confined
+                                geometries, I explore how bacterial density and confinement influence collective
+                                dynamics. The results contribute to a deeper understanding of bacterial activity in
+                                different settings, such as cloud droplets, with potential environmental applications.
+                            </p>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <img src="path-to-research-image2.jpg" alt="Spatial Correlations Plot"
+                                        class="img-fluid">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <img src="path-to-research-image3.jpg" alt="Bacterial Dynamics Visualization"
+                                        class="img-fluid">
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Publication Item 2 -->
-                    <div class="col-md-6 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title">Title of Publication 2</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Conference Proceedings, Year</h6>
-                                <p class="card-text">A brief summary or abstract of the publication goes here.</p>
-                                <a href="#" class="card-link">Read More</a>
-                            </div>
+                </div>
+                <!-- Add more research projects as needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Interests Section -->
+    <section id="research-interests">
+        <div class="container">
+            <h2 class="text-center mb-4">Research Interests</h2>
+            <ul class="list-group list-group-flush text-center">
+                <li class="list-group-item">Active matter and bacterial suspensions</li>
+                <li class="list-group-item">Stochastic modeling and numerical simulations</li>
+                <li class="list-group-item">Particle dynamics in confined systems</li>
+                <li class="list-group-item">Soft matter physics and biophysics</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Latest Publications/Projects Section -->
+    <section id="latest-work">
+        <div class="container">
+            <h2 class="text-center mb-4">Latest Publications & Projects</h2>
+            <div class="row latest-work">
+                <!-- Latest Publication 1 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Flow Fluctuations in Bacterial Suspensions</h5>
+                            <p class="card-text">An in-depth analysis of flow fluctuations observed in bacterial
+                                suspensions under varying confinement conditions.</p>
+                            <a href="https://journals.aps.org/pre/abstract/10.1103/PhysRevE.110.014610" target="_blank"
+                                class="card-link">Read Abstract</a>
+                            <a href="papers/Flow-Fluctuations-in-Bacterial-Suspensions.pdf" target="_blank"
+                                class="card-link">Download PDF</a>
                         </div>
                     </div>
-                    <!-- Add more publications as needed -->
                 </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-5 bg-light">
-            <div class="container">
-                <h2 class="text-center mb-4">Contact Me</h2>
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <!-- Contact Form -->
-                        <form id="contact-form">
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="name" name="name" required
-                                    aria-required="true">
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
-                                <input type="email" class="form-control" id="email" name="email" required
-                                    aria-required="true">
-                            </div>
-                            <div class="mb-3">
-                                <label for="message" class="form-label">Message <span
-                                        class="text-danger">*</span></label>
-                                <textarea class="form-control" id="message" name="message" rows="5" required
-                                    aria-required="true"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Send Message</button>
-                            <div id="form-feedback" class="form-message mt-3"></div>
-                        </form>
+                <!-- Latest Publication 2 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Activity Parameters in Confined Bacterial Baths</h5>
+                            <p class="card-text">Research on extracting activity parameters from confined bacterial
+                                baths using advanced modeling techniques.</p>
+                            <a href="https://link.springer.com/article/10.1007/s10035-022-01221-x" target="_blank"
+                                class="card-link">Read Abstract</a>
+                            <a href="papers/Activity-Parameters-in-Confined-Bacterial-Baths.pdf" target="_blank"
+                                class="card-link">Download PDF</a>
+                        </div>
                     </div>
                 </div>
+                <!-- Add more latest publications/projects as needed -->
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="text-center mb-4">Contact Me</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <!-- Contact Form -->
+                    <form id="contact-form">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="name" name="name" required aria-required="true">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="email" name="email" required
+                                aria-required="true">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message <span class="text-danger">*</span></label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required
+                                aria-required="true"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <div id="form-feedback" class="form-message mt-3"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer Section -->
-    <footer class="bg-secondary text-white text-center py-3">
+    <footer>
         <div class="container">
             <p>&copy; <span id="current-year"></span> Cristian Villalobos</p>
             <nav>
@@ -132,7 +241,7 @@
                     <li class="nav-item"><a class="nav-link text-white" href="#">Privacy</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="#">Security</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="#">Docs</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>

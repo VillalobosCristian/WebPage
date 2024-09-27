@@ -151,41 +151,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
         notes.forEach(note => {
             const listItem = document.createElement('li');
-            listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
+            listItem.classList.add('list-group-item', 'note-item');
+            listItem.textContent = note.title;
+            listItem.setAttribute('data-file', note.filename);
+            listItem.setAttribute('tabindex', '0'); // Make focusable for accessibility
 
-            const noteInfo = document.createElement('div');
-            const noteTitle = document.createElement('h5');
-            noteTitle.textContent = note.title;
-            const noteDescription = document.createElement('p');
-            noteDescription.textContent = note.description;
-            noteInfo.appendChild(noteTitle);
-            noteInfo.appendChild(noteDescription);
-
-            const viewButton = document.createElement('button');
-            viewButton.classList.add('btn', 'btn-primary', 'btn-sm');
-            viewButton.textContent = 'View';
-            viewButton.setAttribute('data-file', note.filename);
-            viewButton.addEventListener('click', () => {
-                loadPhysicsNotes(`notes/${note.filename}`);
+            // Add click event to load the note
+            listItem.addEventListener('click', () => {
+                loadNoteContent(note.filename);
+                setActiveNote(listItem);
             });
 
-            listItem.appendChild(noteInfo);
-            listItem.appendChild(viewButton);
+            // Add keypress event for accessibility (Enter key)
+            listItem.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    loadNoteContent(note.filename);
+                    setActiveNote(listItem);
+                }
+            });
 
             notesList.appendChild(listItem);
         });
     }
 
     /**
-     * Fetches a Markdown file and renders it as HTML.
-     * @param {string} filePath - The path to the Markdown file.
+     * Sets the clicked note as active and removes active class from others.
+     * @param {HTMLElement} activeItem - The list item to set as active.
      */
-    async function loadPhysicsNotes(filePath) {
+    function setActiveNote(activeItem) {
+        const allNotes = document.querySelectorAll('.note-item');
+        allNotes.forEach(item => item.classList.remove('active'));
+        activeItem.classList.add('active');
+    }
+
+    /**
+     * Fetches a Markdown file and renders it as HTML.
+     * @param {string} fileName - The name of the Markdown file to fetch.
+     */
+    async function loadNoteContent(fileName) {
         if (!notesContent) return; // Exit if the element doesn't exist
 
         try {
-            notesContent.innerHTML = '<p>Loading notes...</p>';
-            const response = await fetch(filePath);
+            const response = await fetch(`notes/${fileName}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -211,7 +218,105 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================
-    // 6. Initialize Current Year in Footer
+    // 6. Fetch and Display Publications (For publications.html)
+    // ============================
+    const publicationsList = document.getElementById('publications-list');
+
+    /**
+     * Fetches the list of publications from publications.json and populates the publications list.
+     */
+    async function loadPublicationsList() {
+        if (!publicationsList) return; // Exit if the element doesn't exist
+
+        try {
+            const response = await fetch('publications.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const publications = await response.json();
+            populatePublicationsList(publications);
+        } catch (error) {
+            console.error('Error loading publications list:', error);
+            publicationsList.innerHTML = '<p>Error loading publications list.</p>';
+        }
+    }
+
+    /**
+     * Populates the publications list with fetched publications.
+     * @param {Array} publications - An array of publication objects.
+     */
+    function populatePublicationsList(publications) {
+        if (!Array.isArray(publications) || publications.length === 0) {
+            publicationsList.innerHTML = '<p>No publications available.</p>';
+            return;
+        }
+
+        publicationsList.innerHTML = ''; // Clear existing list
+
+        publications.forEach(pub => {
+            const pubCard = document.createElement('div');
+            pubCard.classList.add('card', 'mb-3');
+
+            const pubBody = document.createElement('div');
+            pubBody.classList.add('card-body');
+
+            const title = document.createElement('h5');
+            title.classList.add('card-title');
+            title.textContent = pub.title;
+
+            const journalInfo = document.createElement('h6');
+            journalInfo.classList.add('card-subtitle', 'mb-2', 'text-muted');
+            journalInfo.textContent = `${pub.journal}, ${pub.year}, Vol. ${pub.volume}, No. ${pub.issue}, pp. ${pub.pages}`;
+
+            const authors = document.createElement('p');
+            authors.classList.add('card-text');
+            authors.innerHTML = `<strong>Authors:</strong> ${pub.authors}`;
+
+            const abstract = document.createElement('p');
+            abstract.classList.add('card-text');
+            abstract.textContent = pub.abstract;
+
+            const linksDiv = document.createElement('div');
+            linksDiv.classList.add('card-links');
+
+            // Link to Journal Abstract
+            const abstractLink = document.createElement('a');
+            abstractLink.href = pub.link;
+            abstractLink.target = '_blank';
+            abstractLink.rel = 'noopener noreferrer';
+            abstractLink.classList.add('card-link');
+            abstractLink.textContent = 'View Abstract';
+
+            // Link to PDF
+            const pdfLink = document.createElement('a');
+            pdfLink.href = `papers/${pub.pdf}`;
+            pdfLink.target = '_blank';
+            pdfLink.rel = 'noopener noreferrer';
+            pdfLink.classList.add('card-link');
+            pdfLink.textContent = 'Download PDF';
+
+            linksDiv.appendChild(abstractLink);
+            linksDiv.appendChild(pdfLink);
+
+            // Assemble Card
+            pubBody.appendChild(title);
+            pubBody.appendChild(journalInfo);
+            pubBody.appendChild(authors);
+            pubBody.appendChild(abstract);
+            pubBody.appendChild(linksDiv);
+
+            pubCard.appendChild(pubBody);
+            publicationsList.appendChild(pubCard);
+        });
+    }
+
+    // Load publications list if on publications.html
+    if (currentPage === 'publications.html') {
+        loadPublicationsList();
+    }
+
+    // ============================
+    // 7. Initialize Current Year in Footer
     // ============================
     const currentYearSpan = document.getElementById('current-year');
 
@@ -221,8 +326,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================
-    // 7. Optional: Handle Additional Features
+    // 8. Contact Form Handling (Optional)
     // ============================
-    // If you have additional features like file uploads or dynamic document lists,
-    // ensure to check for the existence of their corresponding elements before initializing.
+    const contactForm = document.getElementById('contact-form');
+    const formFeedback = document.getElementById('form-feedback');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            formFeedback.textContent = 'Sending...';
+
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                // Replace with your form handling endpoint or use a service like Formspree
+                const response = await fetch('https://formspree.io/f/{your-form-id}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    formFeedback.textContent = 'Message sent successfully!';
+                    contactForm.reset();
+                } else {
+                    throw new Error('Failed to send message.');
+                }
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                formFeedback.textContent = 'There was an error sending your message.';
+            }
+        });
+    }
 });

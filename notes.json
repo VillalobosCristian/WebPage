@@ -1,11 +1,11 @@
 [
     {
-        "title": "Resumen Control 3",
+        "title": "Resumen Control 3 Fluidos",
         "filename": "Resumen-Control-3.md",
-        "description": "An overview of bacterial suspension dynamics in confined spaces."
+        "description": "Resumen de mecánica de Fluidos."
     },
     {
-        "title": "Fluid Dynamics",
+        "title": "Solución tarea 1 Coloquio procesos estocásticos",
         "filename": "Fluid-Dynamics.md",
         "description": "Detailed analysis of fluid flow in various geometries."
     },

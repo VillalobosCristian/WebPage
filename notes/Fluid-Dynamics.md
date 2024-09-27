@@ -328,5 +328,5 @@ donde $x_k$ es la posición de la partícula en el tiempo $t = k\Delta t$, $x_{k
 **(e)** Explore los parámetros de su simulación y pruebe las condiciones bajo las cuales la solución analítica reproduce de manera precisa los resultados numéricos.
 
 
-![[simulacion_movimiento_browniano_completo 1.svg]]
 Tamaño dominio $L=10$, $D=1$, $x_0=0$
+![Simulación del Movimiento Browniano](simulacion_movimiento_browniano_completo%201.svg)

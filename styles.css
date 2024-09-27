@@ -60,13 +60,10 @@ body {
    3. Header and Navigation Styles
    ============================ */
 header {
-    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-    padding: 1.5rem 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: background 0.5s ease;
 }
 
-nav {
+header .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -89,6 +86,7 @@ nav {
     position: relative;
     padding: 5px 0;
     transition: color var(--transition-speed) ease;
+    font-weight: 500;
 }
 
 .nav ul li a::after {
@@ -122,10 +120,16 @@ nav {
     cursor: pointer;
     transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
     font-size: 0.9rem;
+    display: flex;
+    align-items: center;
 }
 
 #dark-mode-toggle:hover {
     background: var(--secondary-color);
+}
+
+#dark-mode-toggle i {
+    margin-right: 5px;
 }
 
 /* ============================
@@ -156,6 +160,7 @@ h4,
 h5,
 h6 {
     color: var(--secondary-color);
+    font-family: 'Montserrat', sans-serif;
 }
 
 p,
@@ -192,95 +197,160 @@ a:hover {
 }
 
 /* ============================
-   5. Notes Section Styles
+   5. Publications Section Styles
    ============================ */
 
-/* Notes List */
-#notes-list {
+/* Publications List */
+#publications-list {
+    margin-top: 20px;
+}
+
+/* Publication Card */
+.publication-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    transition: box-shadow var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+.publication-card:hover {
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+.publication-title {
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.publication-subtitle {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.publication-text {
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+.publication-links {
+    margin-top: 15px;
+}
+
+.publication-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    margin-right: 15px;
+    transition: color var(--transition-speed) ease;
+}
+
+.publication-link:hover {
+    color: var(--secondary-color);
+}
+
+/* ============================
+   6. Current Research Section Styles
+   ============================ */
+
+/* Research Project Cards */
+.current-research .card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    transition: box-shadow var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+.current-research .card:hover {
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+.current-research .card-title {
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.current-research .card-text {
+    color: var(--text-color);
+}
+
+.current-research img {
+    border-radius: 5px;
+}
+
+/* ============================
+   7. Research Interests Section Styles
+   ============================ */
+
+#research-interests ul.list-group-flush {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-#notes-list li {
+#research-interests ul.list-group-flush li.list-group-item {
+    background-color: #f8f9fa;
     margin-bottom: 10px;
-}
-
-.note-item {
-    cursor: pointer;
-    padding: 10px;
-    border: 1px solid var(--primary-color);
+    padding: 10px 15px;
+    border: none;
     border-radius: 5px;
-    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
-}
-
-.note-item:hover,
-.note-item.active {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-/* Notes Content */
-#notes-content {
-    max-height: 800px;
-    /* Adjust as needed */
-    overflow-y: auto;
-    padding: 1rem;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-body.dark-mode #notes-content {
-    background-color: #3c3c3c;
-    color: #f1f1f1;
-    border-color: #555;
-}
-
-/* Customize Markdown Elements */
-#notes-content h1,
-#notes-content h2,
-#notes-content h3,
-#notes-content h4,
-#notes-content h5,
-#notes-content h6 {
-    color: var(--primary-color);
-}
-
-#notes-content p,
-#notes-content ul,
-#notes-content ol {
-    line-height: 1.6;
-}
-
-#notes-content code {
-    background-color: #eaeaea;
-    padding: 2px 4px;
-    border-radius: 4px;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-body.dark-mode #notes-content code {
-    background-color: #555;
-    color: #f1f1f1;
-}
-
-#notes-content pre {
-    background-color: #eaeaea;
-    padding: 1rem;
-    border-radius: 5px;
-    overflow-x: auto;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-body.dark-mode #notes-content pre {
-    background-color: #555;
-    color: #f1f1f1;
+    font-size: 1.1rem;
+    text-align: center;
 }
 
 /* ============================
-   6. Footer Styles
+   8. Latest Publications/Projects Section Styles
+   ============================ */
+
+/* Latest Work Cards */
+.latest-work .card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    transition: box-shadow var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+.latest-work .card:hover {
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+.latest-work .card-title {
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.latest-work .card-text {
+    color: var(--text-color);
+}
+
+.latest-work .card-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    margin-right: 15px;
+    transition: color var(--transition-speed) ease;
+}
+
+.latest-work .card-link:hover {
+    color: var(--secondary-color);
+}
+
+/* ============================
+   9. Contact Section Styles
+   ============================ */
+
+#contact-form label {
+    font-weight: bold;
+}
+
+#contact-form .form-control::placeholder {
+    color: #aaa;
+}
+
+#form-feedback {
+    display: none;
+    /* Initially hidden */
+}
+
+/* ============================
+   10. Footer Styles
    ============================ */
 footer {
     background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
@@ -326,7 +396,7 @@ footer ul li a:hover {
 }
 
 /* ============================
-   7. Back to Top Button Styles
+   11. Back to Top Button Styles
    ============================ */
 #back-to-top {
     background-color: var(--primary-color);
@@ -345,6 +415,7 @@ footer ul li a:hover {
     z-index: 1000;
     font-size: 1.5rem;
     cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #back-to-top:hover {
@@ -353,19 +424,7 @@ footer ul li a:hover {
 }
 
 /* ============================
-   8. Notes List Button (Optional for Multiple Notes)
-   ============================ */
-.note-btn {
-    margin: 0 5px;
-}
-
-.note-btn.active {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-/* ============================
-   9. Accessibility Focus Styles
+   12. Accessibility Focus Styles
    ============================ */
 a:focus,
 button:focus,
@@ -376,7 +435,7 @@ textarea:focus {
 }
 
 /* ============================
-   10. Responsive Design
+   13. Responsive Design
    ============================ */
 @media (max-width: 768px) {
     .container {
@@ -398,18 +457,14 @@ textarea:focus {
         margin: 10px 0;
     }
 
-    #notes-list {
-        display: flex;
-        flex-direction: column;
+    #publications-list .card,
+    #current-research .card,
+    #latest-work .card {
+        margin-bottom: 20px;
     }
 
-    #notes-list li {
-        margin-bottom: 10px;
-    }
-
-    #notes-content {
-        max-height: 600px;
-        /* Adjust as needed for smaller screens */
+    #research-interests ul.list-group-flush li.list-group-item {
+        font-size: 1rem;
     }
 
     footer ul li {
@@ -427,7 +482,7 @@ textarea:focus {
 }
 
 /* ============================
-   11. Additional Enhancements
+   14. Additional Enhancements
    ============================ */
 
 /* Smooth Transition for Theme Changes */
@@ -435,44 +490,79 @@ body,
 header,
 footer,
 section,
-#notes-content {
+#notes-content,
+#publications-list,
+#current-research,
+#research-interests,
+#latest-work {
     transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
 }
 
-/* Notes List Styling */
-#notes-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+/* Hover Effects for Cards */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
 }
 
-#notes-list li {
-    margin-bottom: 10px;
+/* Subtle Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 40px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
 }
 
-.note-item {
-    cursor: pointer;
-    padding: 10px;
-    border: 1px solid var(--primary-color);
-    border-radius: 5px;
-    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+.card,
+.list-group-item,
+.btn {
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
 }
 
-.note-item:hover,
-.note-item.active {
-    background-color: var(--primary-color);
-    color: white;
+.card.show,
+.list-group-item.show,
+.btn.show {
+    opacity: 1;
+    transform: none;
 }
 
-/* Pagination (If Needed) */
-.pagination {
-    justify-content: center;
+/* Enhanced Buttons */
+.btn-primary,
+.btn-secondary {
+    border-radius: 50px;
+    padding: 10px 30px;
+    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
 }
 
-.pagination li a {
-    color: var(--primary-color);
+.btn-primary:hover,
+.btn-secondary:hover {
+    transform: scale(1.05);
 }
 
-.pagination li a:hover {
-    color: var(--secondary-color);
+/* Rounded Images with Shadows */
+img.rounded-circle {
+    border: 5px solid white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================
+   15. Responsive Typography
+   ============================ */
+@media (max-width: 576px) {
+
+    h1,
+    h2,
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    p,
+    li {
+        font-size: 0.9rem;
+    }
 }
