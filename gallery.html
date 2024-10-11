@@ -1,0 +1,224 @@
+<!-- gallery.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Cristian Villalobos</title>
+    <!-- Meta Description for SEO -->
+    <meta name="description"
+        content="Explore the media gallery of physicist Cristian Villalobos, showcasing experiments, simulations, and research projects in bacterial suspension dynamics and nonlinear physics.">
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Gallery - Cristian Villalobos">
+    <meta property="og:description"
+        content="Explore the media gallery of physicist Cristian Villalobos, showcasing experiments, simulations, and research projects in bacterial suspension dynamics and nonlinear physics.">
+    <meta property="og:image" content="images/og-gallery.jpg">
+    <meta property="og:url" content="https://www.yourwebsite.com/gallery.html">
+    <meta property="og:type" content="website">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- DOMPurify for sanitizing HTML (used in scripts.js) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js" integrity="sha512-..."
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; img-src 'self' data: https://*; font-src 'self' https://cdnjs.cloudflare.com;">
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="bg-primary text-white py-4">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+                <!-- Branding (Text-Based) -->
+                <div class="mb-3 mb-md-0">
+                    <a href="index.html" class="text-white text-decoration-none">
+                        <h1 class="h4 mb-0">Cristian Villalobos</h1>
+                    </a>
+                </div>
+                <!-- Navigation Menu -->
+                <nav>
+                    <ul class="nav">
+                        <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="curriculum.html">Curriculum</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="publications.html">Publications</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link text-white active" href="gallery.html">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <!-- Dark Mode Toggle Button -->
+                <button id="dark-mode-toggle" class="btn btn-outline-light" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <!-- Detailed Contact Information (Optional) -->
+            <div class="mt-4">
+                <p><i class="fas fa-university"></i> Universidad de Chile</p>
+                <p><i class="fas fa-map-marker-alt"></i> Beauchef 850, Santiago, Chile.</p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:cristian.villalobos@ug.uchile.cl"
+                        class="text-white">cristian.villalobos@ug.uchile.cl</a></p>
+                <p><i class="fas fa-flask"></i> Interest in: Bacterial Suspensions - Confined Dynamics - Nonlinear
+                    Physics</p>
+                <!-- Social Media Links -->
+                <p>
+                    <a href="https://github.com/VillalobosCristian" target="_blank" class="text-white me-3"
+                        aria-label="GitHub">
+                        <i class="fab fa-github fa-lg"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/cristian-villalobos" target="_blank" class="text-white"
+                        aria-label="LinkedIn">
+                        <i class="fab fa-linkedin fa-lg"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Media Gallery</h2>
+            <div class="row">
+                <!-- E. coli Swimming GIF -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <!-- Trigger Button -->
+                        <button type="button" class="btn p-0 border-0" data-bs-toggle="modal"
+                            data-bs-target="#modalEcoli">
+                            <img src="Gif/Ecoli_swimming.gif" alt="E. coli swimming under microscope"
+                                class="card-img-top" loading="lazy">
+                        </button>
+                        <div class="card-body">
+                            <h5 class="card-title">E. coli Swimming</h5>
+                            <p class="card-text">A GIF showing the swimming motion of E. coli bacteria under a
+                                microscope and tracked using Trackmate.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Double Emulsion Experiment GIF -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <!-- Trigger Button -->
+                        <button type="button" class="btn p-0 border-0" data-bs-toggle="modal"
+                            data-bs-target="#modalDEExperiment">
+                            <img src="Gif/DE_experiment.gif" alt="Double Emulsion Experiment" class="card-img-top"
+                                loading="lazy">
+                        </button>
+                        <div class="card-body">
+                            <h5 class="card-title">Double Emulsion Experiment</h5>
+                            <p class="card-text">A GIF of the Double Emulsion experiment from my thesis, showing an
+                                active bath of E.coli inside a droplet, where an oil droplet is trapped inside the
+                                bacterial droplet moving because of the activity.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulation of Double Emulsion Experiment GIF -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <!-- Trigger Button -->
+                        <button type="button" class="btn p-0 border-0" data-bs-toggle="modal"
+                            data-bs-target="#modalDESimulation">
+                            <img src="Gif/DE_SIM.gif" alt="Simulation of Double Emulsion Experiment"
+                                class="card-img-top w-100" style="max-height: 400px; object-fit: contain;"
+                                loading="lazy">
+                        </button>
+                        <div class="card-body">
+                            <h5 class="card-title">Simulation of Double Emulsion Experiment</h5>
+                            <p class="card-text">A simulation related to the paper "Recovering the activity parameters
+                                of an active fluid confined in a sphere," showcasing the dynamics of the Double Emulsion
+                                experiment.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more gallery items as needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals for Gallery Items -->
+
+    <!-- Modal for E. coli Swimming -->
+    <div class="modal fade" id="modalEcoli" tabindex="-1" aria-labelledby="modalEcoliLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEcoliLabel">E. coli Swimming</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="Gif/Ecoli_swimming.gif" alt="E. coli swimming under microscope" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Double Emulsion Experiment -->
+    <div class="modal fade" id="modalDEExperiment" tabindex="-1" aria-labelledby="modalDEExperimentLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalDEExperimentLabel">Double Emulsion Experiment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="Gif/DE_experiment.gif" alt="Double Emulsion Experiment" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Simulation of Double Emulsion Experiment -->
+    <div class="modal fade" id="modalDESimulation" tabindex="-1" aria-labelledby="modalDESimulationLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalDESimulationLabel">Simulation of Double Emulsion Experiment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="Gif/DE_SIM.gif" alt="Simulation of Double Emulsion Experiment" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-secondary text-white text-center py-3">
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Cristian Villalobos</p>
+            <nav>
+                <ul class="nav justify-content-center">
+                    <li class="nav-item"><a class="nav-link text-white" href="terms.html">Terms</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="privacy.html">Privacy</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="security.html">Security</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="docs.html">Docs</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

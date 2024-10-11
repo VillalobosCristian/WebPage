@@ -6,6 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cristian Villalobos - Physicist</title>
+    <!-- Meta Description for SEO -->
+    <meta name="description"
+        content="Cristian Villalobos' personal website showcasing his work in bacterial suspension dynamics, nonlinear physics, and more.">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome for Icons -->
@@ -17,6 +20,9 @@
     <!-- MathJax for LaTeX Rendering (if needed) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"
         async></script>
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; img-src 'self' data: https://*; font-src 'self' https://cdnjs.cloudflare.com;">
 </head>
 
 <body>
@@ -26,19 +32,25 @@
             <div class="d-flex flex-wrap justify-content-between align-items-center">
                 <!-- Logo -->
                 <div class="mb-3 mb-md-0">
-                    <img src="path-to-your-logo.png" alt="Lab Logo" width="100" height="100">
+                    <a href="index.html" class="text-white text-decoration-none">
+
+                        <!-- Alternatively, use a text logo -->
+                        <!-- <h1>Cristian Villalobos</h1> -->
+                    </a>
                 </div>
                 <!-- Navigation Menu -->
-                <nav>
-                    <ul class="nav">
-                        <li class="nav-item"><a class="nav-link text-white active" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="curriculum.html">Curriculum</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="publications.html">Publications</a>
-                        </li>
-                        <li class="nav-item"><a class="nav-link text-white" href="notes.html">Notes</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link text-white active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="curriculum.html">Curriculum</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="publications.html">Publications</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="notes.html">Notes</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="gallery.html">Gallery</a></li>
+                    <!-- New Gallery Link -->
+                   
+                </ul>
+            </nav>
+
                 <!-- Dark Mode Toggle Button -->
                 <button id="dark-mode-toggle" class="btn btn-outline-light" aria-label="Toggle Dark Mode">
                     <i class="fas fa-moon"></i>
@@ -46,8 +58,7 @@
             </div>
             <!-- Detailed Contact Information -->
             <div class="mt-4">
-                <p><i class="fas fa-university"></i> Universidad de Chile
-                </p>
+                <p><i class="fas fa-university"></i> Universidad de Chile</p>
                 <p><i class="fas fa-map-marker-alt"></i> Beauchef 850, Santiago, Chile.</p>
                 <p><i class="fas fa-envelope"></i> <a href="mailto:cristian.villalobos@ug.uchile.cl"
                         class="text-white">cristian.villalobos@ug.uchile.cl</a></p>
@@ -59,7 +70,7 @@
                         aria-label="GitHub">
                         <i class="fab fa-github fa-lg"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="text-white"
+                    <a href="https://www.linkedin.com/in/cristian-villalobos" target="_blank" class="text-white"
                         aria-label="LinkedIn">
                         <i class="fab fa-linkedin fa-lg"></i>
                     </a>
@@ -72,69 +83,70 @@
     <section id="hero" class="py-5 bg-light">
         <div class="container text-center">
             <!-- Professional Photo -->
-            <img src="path-to-your-photo.jpg" alt="Cristian Villalobos" class="rounded-circle mb-4" width="200"
-                height="200">
+
             <!-- Introduction Text -->
-            <h2 class="mb-3">Welcome to My Professional Portfolio</h2>
-            <p class="lead">I am Cristian Villalobos, a physicist specializing in bacterial suspension dynamics and
-                confined space phenomena. Explore my work, publications, and notes below.</p>
+            <p class="lead">I am Cristian Villalobos, a Chilean physicist specializing in bacterial suspension dynamics
+                and confinement effects. Explore my work, publications, and notes from my courses below.</p>
             <!-- Call to Action Buttons -->
             <a href="curriculum.html" class="btn btn-primary me-2">View Curriculum</a>
             <a href="notes.html" class="btn btn-secondary">Explore Notes</a>
         </div>
     </section>
 
-    <!-- Publications Section -->
-    <section id="publications" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Publications</h2>
-            <div id="publications-list">
-                <!-- Publications will be dynamically loaded here -->
-                <p>Loading publications...</p>
-            </div>
-        </div>
-    </section>
 
     <!-- Current Research Section -->
     <section id="current-research" class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center mb-4">Current Research</h2>
+            <h2 class="text-center mb-4">Research</h2>
             <div class="row">
                 <!-- Research Project 1 -->
-                <div class="col-md-6 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h3 class="card-title">Fluctuations and Dynamics of Passive Particles in Confined Bacterial
-                                Suspensions</h3>
-                            <p class="card-text">My research focuses on understanding the dynamics of passive particles
-                                immersed in active bacterial baths, particularly in spherical confinement. By combining
-                                experimental techniques and theoretical modeling, I aim to extract the properties of the
-                                bacterial bath and its effect on tracer motion, with implications for both fundamental
-                                physics and practical applications in soft matter and biophysics.</p>
-                            <img src="path-to-research-image1.jpg" alt="Bacterial Suspension Dynamics"
-                                class="img-fluid mb-3">
+                <div class="col-lg-6 d-flex align-items-stretch mb-4">
+                    <div class="card h-100 w-100">
+                        <div class="row g-0">
+                            <div class="col-md-6">
+                                <img src="figures/Fig_DE.png" alt="Active bacterial bath in droplets" class="img-fluid"
+                                    loading="lazy">
+                            </div>
+                            <div class="col-md-6 d-flex flex-column">
+                                <div class="card-body">
+                                    <h3 class="card-title">Fluctuations and Dynamics of Passive Particles in Confined
+                                        Bacterial Suspensions</h3>
+                                    <p class="card-text">My research focuses on understanding the dynamics of passive
+                                        particles immersed in active bacterial baths, particularly in spherical
+                                        confinement. By combining experimental techniques and theoretical modeling, I
+                                        aim to extract the properties of the bacterial bath and its effect on tracer
+                                        motion, with implications for both fundamental physics and practical
+                                        applications in soft matter and biophysics.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- Research Project 2 -->
-                <div class="col-md-6 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h3 class="card-title">Analyzing Spatial Correlations in Bacterial Suspensions</h3>
-                            <p class="card-text">This project delves into spatial and temporal correlations between
-                                particle pairs within bacterial suspensions. By analyzing these interactions in confined
-                                geometries, I explore how bacterial density and confinement influence collective
-                                dynamics. The results contribute to a deeper understanding of bacterial activity in
-                                different settings, such as cloud droplets, with potential environmental applications.
-                            </p>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <img src="path-to-research-image2.jpg" alt="Spatial Correlations Plot"
-                                        class="img-fluid">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <img src="path-to-research-image3.jpg" alt="Bacterial Dynamics Visualization"
-                                        class="img-fluid">
+                <div class="col-lg-6 d-flex align-items-stretch mb-4">
+                    <div class="card h-100 w-100">
+                        <div class="row g-0">
+                            <div class="col-md-6">
+                                <img src="figures/Crater_Formation.png" alt="Crater Formation Dynamics"
+                                    class="img-fluid" loading="lazy">
+                            </div>
+                            <div class="col-md-6 d-flex flex-column">
+                                <div class="card-body">
+                                    <h3 class="card-title">Geometrical Description of Impact Cratering Under
+                                        Microgravity Conditions</h3>
+                                    <p class="card-text">
+                                        This study presents a novel experimental setup for analyzing impact cratering in
+                                        granular media under microgravity conditions. The research investigates how
+                                        different projectile shapes (spheres, cones, pyramids, cubes) influence both the
+                                        surface and subsurface dynamics of crater formation. The findings reveal that
+                                        the geometry of the projectile significantly affects the crater shape and energy
+                                        dissipation, providing new insights into planetary formation processes,
+                                        particularly in protoplanetary disks. This paper was selected as the
+                                        <strong>cover of the journal Granular Matter in May 2022</strong>.
+                                    </p>
+                                    <img src="figures/Portada_crater.png" alt="Journal Cover" class="img-fluid mt-auto"
+                                        loading="lazy">
+                                    <p class="text-center mt-2"><em>Cover of Granular Matter, May 2022</em></p>
                                 </div>
                             </div>
                         </div>
@@ -167,13 +179,13 @@
                 <div class="col-md-6 mb-4">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h5 class="card-title">Flow Fluctuations in Bacterial Suspensions</h5>
-                            <p class="card-text">An in-depth analysis of flow fluctuations observed in bacterial
-                                suspensions under varying confinement conditions.</p>
-                            <a href="https://journals.aps.org/pre/abstract/10.1103/PhysRevE.110.014610" target="_blank"
-                                class="card-link">Read Abstract</a>
-                            <a href="papers/Flow-Fluctuations-in-Bacterial-Suspensions.pdf" target="_blank"
-                                class="card-link">Download PDF</a>
+                            <h5 class="card-title">Geometrical Description of Impact Cratering Under Microgravity
+                                Conditions
+                            </h5>
+                            <p class="card-text">This study explores the dynamics of impact cratering in granular media
+                                under microgravity conditions.</p>
+                            <a href="papers/Geometrical%20description%20of%20impact%20cratering%20under%20microgravity%20conditions.pdf"
+                                target="_blank" class="card-link">Click to see the PDF</a>
                         </div>
                     </div>
                 </div>
@@ -181,47 +193,17 @@
                 <div class="col-md-6 mb-4">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h5 class="card-title">Activity Parameters in Confined Bacterial Baths</h5>
-                            <p class="card-text">Research on extracting activity parameters from confined bacterial
-                                baths using advanced modeling techniques.</p>
-                            <a href="https://link.springer.com/article/10.1007/s10035-022-01221-x" target="_blank"
-                                class="card-link">Read Abstract</a>
-                            <a href="papers/Activity-Parameters-in-Confined-Bacterial-Baths.pdf" target="_blank"
-                                class="card-link">Download PDF</a>
+                            <h5 class="card-title">Recovering the Activity Parameters of an Active Fluid Confined in a
+                                Sphere</h5>
+                            <p class="card-text">Research on recovering the activity parameters of confined active
+                                fluids
+                                using advanced theoretical approaches.</p>
+                            <a href="papers/Recovering%20the%20activity%20parameters%20of%20an%20active%20fluid%20confined%20in%20a%20sphere.pdf"
+                                target="_blank" class="card-link">Click to see the PDF</a>
                         </div>
                     </div>
                 </div>
-                <!-- Add more latest publications/projects as needed -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Contact Me</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <!-- Contact Form -->
-                    <form id="contact-form">
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="name" name="name" required aria-required="true">
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
-                            <input type="email" class="form-control" id="email" name="email" required
-                                aria-required="true">
-                        </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Message <span class="text-danger">*</span></label>
-                            <textarea class="form-control" id="message" name="message" rows="5" required
-                                aria-required="true"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                        <div id="form-feedback" class="form-message mt-3"></div>
-                    </form>
-                </div>
+                <!-- Add more latest works as needed -->
             </div>
         </div>
     </section>
@@ -232,10 +214,10 @@
             <p>&copy; <span id="current-year"></span> Cristian Villalobos</p>
             <nav>
                 <ul class="nav justify-content-center">
-                    <li class="nav-item"><a class="nav-link text-white" href="#">Terms</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#">Privacy</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#">Security</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#">Docs</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="terms.html">Terms</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="privacy.html">Privacy</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="security.html">Security</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="docs.html">Docs</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
                 </ul>
             </nav>

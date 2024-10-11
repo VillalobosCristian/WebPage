@@ -2,13 +2,14 @@
 
 /* ============================
    1. Import Google Fonts
-   ============================ */
+============================ */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&display=swap');
 
 /* ============================
    2. CSS Variables for Theme Colors
-   ============================ */
+============================ */
 :root {
+    /* Light Mode Variables */
     --primary-color: #2C3E50;
     /* Dark Slate Blue */
     --secondary-color: #18BC9C;
@@ -25,7 +26,8 @@
     /* Transition Duration */
 }
 
-:root.dark-mode {
+.dark-mode {
+    /* Dark Mode Variables */
     --primary-color: #ECF0F1;
     /* Light Gray */
     --secondary-color: #18BC9C;
@@ -42,7 +44,7 @@
 
 /* ============================
    3. Global Styles
-   ============================ */
+============================ */
 * {
     box-sizing: border-box;
 }
@@ -66,7 +68,7 @@ body {
 
 /* ============================
    4. Header and Navigation Styles
-   ============================ */
+============================ */
 header {
     background-color: var(--header-footer-bg);
     color: var(--background-color);
@@ -124,7 +126,7 @@ header .nav {
 #dark-mode-toggle {
     background-color: transparent;
     border: 2px solid var(--background-color);
-    border-radius: 50px;
+    border-radius: 50%;
     width: 50px;
     height: 50px;
     cursor: pointer;
@@ -146,7 +148,7 @@ header .nav {
 
 /* ============================
    5. Hero Section Styles
-   ============================ */
+============================ */
 #hero {
     background: linear-gradient(135deg, #f3f4f7 0%, #ffffff 100%);
     padding: 60px 0;
@@ -154,21 +156,6 @@ header .nav {
     border-bottom-left-radius: 50% 20%;
     border-bottom-right-radius: 50% 20%;
     transition: background 0.5s ease;
-}
-
-#hero img {
-    border: 5px solid var(--background-color);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    width: 150px;
-    height: 150px;
-}
-
-#hero h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2rem;
-    margin-top: 20px;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
 }
 
 #hero p {
@@ -211,7 +198,7 @@ header .nav {
 
 /* ============================
    6. Publications Section Styles
-   ============================ */
+============================ */
 
 /* Publications List */
 #publications-list {
@@ -274,7 +261,7 @@ header .nav {
 
 /* ============================
    7. Current Research Section Styles
-   ============================ */
+============================ */
 
 /* Research Project Cards */
 .current-research .card {
@@ -306,11 +293,13 @@ header .nav {
     border-radius: 10px;
     margin-top: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    height: auto;
 }
 
 /* ============================
    8. Research Interests Section Styles
-   ============================ */
+============================ */
 
 #research-interests ul {
     list-style: none;
@@ -338,7 +327,7 @@ header .nav {
 
 /* ============================
    9. Latest Publications/Projects Section Styles
-   ============================ */
+============================ */
 
 /* Latest Work Cards */
 .latest-work .card {
@@ -380,7 +369,7 @@ header .nav {
 
 /* ============================
    10. Contact Section Styles
-   ============================ */
+============================ */
 
 #contact-form label {
     font-weight: bold;
@@ -395,6 +384,7 @@ header .nav {
     font-size: 1rem;
     font-family: 'Roboto', sans-serif;
     transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    width: 100%;
 }
 
 #contact-form input:focus,
@@ -424,11 +414,12 @@ header .nav {
     display: none;
     font-size: 1.1rem;
     padding-top: 10px;
+    color: var(--secondary-color);
 }
 
 /* ============================
    11. Footer Styles
-   ============================ */
+============================ */
 footer {
     background-color: var(--header-footer-bg);
     color: var(--background-color);
@@ -448,7 +439,7 @@ footer .nav {
 
 footer .nav-link {
     font-size: 0.9rem;
-    color: #333;
+    color: var(--background-color);
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     transition: color var(--transition-speed) ease;
@@ -460,7 +451,7 @@ footer .nav-link:hover {
 
 /* ============================
    12. Back to Top Button Styles
-   ============================ */
+============================ */
 #back-to-top {
     background-color: var(--secondary-color);
     color: white;
@@ -488,7 +479,7 @@ footer .nav-link:hover {
 
 /* ============================
    13. Accessibility Focus Styles
-   ============================ */
+============================ */
 a:focus,
 button:focus,
 input:focus,
@@ -499,7 +490,7 @@ textarea:focus {
 
 /* ============================
    14. Responsive Design
-   ============================ */
+============================ */
 @media (max-width: 768px) {
     .container {
         width: 95%;
@@ -520,15 +511,10 @@ textarea:focus {
         margin: 10px 0;
     }
 
-    #publications-list .publication-card,
-    #current-research .card,
-    #latest-work .card {
+    .publication-card,
+    .current-research .card,
+    .latest-work .card {
         margin-bottom: 20px;
-    }
-
-    #notes-content {
-        max-height: 600px;
-        /* Adjust as needed for smaller screens */
     }
 
     footer .nav-link {
@@ -547,15 +533,6 @@ textarea:focus {
     }
 
     /* Hero Section Adjustments */
-    #hero img {
-        width: 120px;
-        height: 120px;
-    }
-
-    #hero h2 {
-        font-size: 1.8rem;
-    }
-
     #hero p {
         font-size: 1rem;
     }
@@ -563,5 +540,11 @@ textarea:focus {
     /* Section Heading Adjustments */
     section h2 {
         font-size: 2rem;
+    }
+
+    /* Contact Form Adjustments */
+    #contact-form button {
+        width: 100%;
+        padding: 12px 0;
     }
 }
