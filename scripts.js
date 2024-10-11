@@ -2,62 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // ============================
-    // 1. Dark Mode Toggle
-    // ============================
-    const darkModeToggle = document.getElementById('dark-mode-toggle');
-    const body = document.body;
-
-    /**
-     * Sets the theme based on the provided parameter.
-     * @param {string} theme - The theme to set ('dark' or 'light').
-     */
-    const setTheme = (theme) => {
-        if (theme === 'dark') {
-            body.classList.add('dark-mode');
-            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-            darkModeToggle.setAttribute('aria-pressed', 'true');
-        } else {
-            body.classList.remove('dark-mode');
-            darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-            darkModeToggle.setAttribute('aria-pressed', 'false');
-        }
-        localStorage.setItem('theme', theme);
-    };
-
-    /**
-     * Initializes the theme based on user preference or system settings.
-     */
-    const initializeTheme = () => {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            setTheme(savedTheme);
-        } else {
-            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-            setTheme(prefersDarkScheme.matches ? 'dark' : 'light');
-        }
-    };
-
-    // Initialize theme on page load
-    initializeTheme();
-
-    // Toggle theme on button click
-    if (darkModeToggle) {
-        darkModeToggle.addEventListener('click', () => {
-            const currentTheme = body.classList.contains('dark-mode') ? 'dark' : 'light';
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            setTheme(newTheme);
-        });
-    }
-
-    // Listen for changes in localStorage (theme changes in other tabs)
-    window.addEventListener('storage', (e) => {
-        if (e.key === 'theme') {
-            setTheme(e.newValue);
-        }
-    });
-
-    // ============================
-    // 2. Smooth Scrolling for Internal Links
+    // 1. Smooth Scrolling for Internal Links
     // ============================
     const internalLinks = document.querySelectorAll('a[href^="#"]');
 
@@ -77,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ============================
-    // 3. Active Link Highlighting
+    // 2. Active Link Highlighting
     // ============================
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('nav ul li a');
@@ -124,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     // ============================
-    // 4. Back to Top Button
+    // 3. Back to Top Button
     // ============================
     const backToTopButton = document.getElementById('back-to-top');
 
@@ -151,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================
-    // 5. Fetch and Display Publications (For publications.html)
+    // 4. Fetch and Display Publications (For publications.html)
     // ============================
     const publicationsList = document.getElementById('publications-list');
     const publicationsLoading = document.getElementById('publications-loading');
@@ -163,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!publicationsList) return; // Exit if the element doesn't exist
 
         try {
-            const response = await fetch('publication.json'); // Ensure this path is correct
+            const response = await fetch('publications.json'); // Ensure this path is correct
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -206,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p class="card-text"><strong>DOI:</strong> <a href="https://doi.org/${pub.doi}" target="_blank" rel="noopener noreferrer">${pub.doi}</a></p>
                         <p class="card-text"><strong>Abstract:</strong> ${pub.abstract}</p>
                         <div class="mt-auto">
-                            <a href="papers/${pub.pdf}" class="btn btn-primary me-2" target="_blank" rel="noopener noreferrer">
+                            <a href="papers/${encodeURIComponent(pub.pdf)}" class="btn btn-primary me-2" target="_blank" rel="noopener noreferrer">
                                 <i class="fas fa-file-download me-1"></i> Download PDF
                             </a>
                             <a href="https://doi.org/${pub.doi}" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
@@ -228,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================
-    // 6. Fetch and Display Notes List (For notes.html)
+    // 5. Fetch and Display Notes List (For notes.html)
     // ============================
     const notesList = document.getElementById('notes-list');
     const notesContent = document.getElementById('notes-content');
@@ -334,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================
-    // 7. Contact Form Handling
+    // 6. Contact Form Handling
     // ============================
     const contactForm = document.getElementById('contact-form');
     const formFeedback = document.getElementById('form-feedback');
@@ -399,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================
-    // 8. Initialize Current Year in Footer
+    // 7. Initialize Current Year in Footer
     // ============================
     const currentYearSpan = document.getElementById('current-year');
 

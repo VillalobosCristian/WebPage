@@ -26,22 +26,6 @@
     /* Transition Duration */
 }
 
-.dark-mode {
-    /* Dark Mode Variables */
-    --primary-color: #ECF0F1;
-    /* Light Gray */
-    --secondary-color: #18BC9C;
-    /* Strong Cyan */
-    --accent-color: #E74C3C;
-    /* Vivid Red */
-    --background-color: #2C3E50;
-    /* Dark Slate Blue */
-    --text-color: #ECF0F1;
-    /* Light Gray */
-    --header-footer-bg: #2C3E50;
-    /* Dark Slate Blue */
-}
-
 /* ============================
    3. Global Styles
 ============================ */
@@ -120,30 +104,6 @@ header .nav {
 
 .nav ul li a:hover {
     color: var(--secondary-color);
-}
-
-/* Dark Mode Toggle Button */
-#dark-mode-toggle {
-    background-color: transparent;
-    border: 2px solid var(--background-color);
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#dark-mode-toggle:hover {
-    background-color: var(--secondary-color);
-    border-color: var(--secondary-color);
-    color: var(--background-color);
-}
-
-#dark-mode-toggle i {
-    font-size: 1.3rem;
 }
 
 /* ============================
