@@ -508,3 +508,26 @@ textarea:focus {
         padding: 12px 0;
     }
 }
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    /* Peso normal para el texto */
+    color: var(--text-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    /* Peso para los títulos */
+}
+
+.btn {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    /* Peso para los botones */
+}
