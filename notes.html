@@ -1,33 +1,79 @@
-<!-- notes.html -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Physics Notes - Cristian Villalobos</title>
+    <!-- Meta Description for SEO -->
+    <meta name="description"
+        content="Physics notes by Cristian Villalobos. Explore detailed notes on Fluid Dynamics, Thermodynamics, and more.">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="styles.css">
-    <!-- Marked.js v3.0.8 for Markdown Parsing -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+    <!-- Marked.js for Markdown Parsing -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/3.0.8/marked.min.js"></script>
-    <!-- MathJax Configuration -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [['$','$'], ["\\(","\\)"]],
-          displayMath: [['$$','$$'], ["\\[","\\]"]],
-          processEscapes: true
-        },
-        "HTML-CSS": { preferredFont: "TeX" }
-      });
-    </script>
-    <!-- MathJax for LaTeX Rendering -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"
-        async></script>
+
+    <!-- DOMPurify for Sanitizing HTML -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.7/purify.min.js"></script>
+
+    <!-- MathJax 3.x for LaTeX Rendering -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js" defer></script>
+
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net 'unsafe-inline'; img-src 'self' data: https://*; font-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net;">
+
+    <!-- Custom Styles -->
+    <style>
+        /* Custom styles to align with your website */
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .note-list-item {
+            cursor: pointer;
+        }
+
+        .note-list-item.active {
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+
+        #notes-content {
+            margin-top: 20px;
+        }
+
+        /* Adjust the layout for better alignment */
+        .notes-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .notes-list {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            margin-right: 20px;
+        }
+
+        .notes-content {
+            flex: 3;
+            min-width: 300px;
+        }
+
+        /* Back to Top Button Styles */
+        #back-to-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            display: none;
+            z-index: 99;
+        }
+    </style>
 </head>
 
 <body>
@@ -42,37 +88,32 @@
                     <ul class="nav">
                         <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link text-white" href="curriculum.html">Curriculum</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#publications">Publications</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="notes.html">Notes</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="publications.html">Publications</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link text-white active" href="notes.html">Notes</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="gallery.html">Gallery</a></li>
                     </ul>
                 </nav>
-                <!-- Dark Mode Toggle Button -->
-                <button id="dark-mode-toggle" class="btn btn-outline-light" aria-label="Toggle Dark Mode">
-                    <i class="fas fa-moon"></i>
-                </button>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main>
-        <!-- Notes Section -->
-        <section id="notes" class="py-5">
-            <div class="container">
-                <h2 class="text-center mb-4">Physics Notes</h2>
-                <!-- Notes List -->
-                <ul id="notes-list" class="list-group mb-4">
-                    <!-- Notes will be dynamically populated here -->
-                    <li class="list-group-item">Loading notes...</li>
+    <main class="container my-5">
+        <h2 class="text-center mb-4">Physics Notes</h2>
+        <div class="notes-container">
+            <!-- Notes List -->
+            <div class="notes-list">
+                <ul id="notes-list" class="list-group">
+                    <!-- Notes will be populated here -->
                 </ul>
-                <!-- Notes Content -->
-                <div id="notes-content" class="border rounded p-4">
-                    <!-- Selected note content will be dynamically loaded here -->
-                    <p>Select a note from the list to view its content.</p>
-                </div>
             </div>
-        </section>
+            <!-- Note Content -->
+            <div id="notes-content" class="notes-content">
+                <!-- Selected note content will be displayed here -->
+                <p>Select a note from the list to view its content.</p>
+            </div>
+        </div>
     </main>
 
     <!-- Footer Section -->
@@ -85,21 +126,27 @@
                     <li class="nav-item"><a class="nav-link text-white" href="#">Privacy</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="#">Security</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="#">Docs</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" aria-label="Back to Top">
+    <button id="back-to-top" aria-label="Back to Top" class="btn btn-primary btn-lg rounded-circle" title="Back to Top">
         <i class="fas fa-chevron-up"></i>
     </button>
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom Scripts -->
+
+    <!-- Include Your Script -->
     <script src="scripts.js"></script>
+
+    <!-- Initialize Current Year in Footer -->
+    <script>
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+    </script>
 </body>
 
 </html>

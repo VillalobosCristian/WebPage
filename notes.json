@@ -1,18 +1,14 @@
 [
     {
-        "title": "Resumen Control 3 Fluidos",
-        "filename": "Resumen-Control-3.md",
-        "description": "Resumen de mecánica de Fluidos."
+        "title": "Fluid Dynamics",
+        "filename": "Fluid-Dynamics.md"
     },
     {
-        "title": "Solución tarea 1 Coloquio procesos estocásticos",
-        "filename": "Fluid-Dynamics.md",
-        "description": "Detailed analysis of fluid flow in various geometries."
+        "title": "Resumen Control 3",
+        "filename": "Resumen-Control-3.md"
     },
     {
         "title": "Thermodynamics",
-        "filename": "Thermodynamics.md",
-        "description": "Study of heat transfer and energy conversion processes."
+        "filename": "Thermodynamics.md"
     }
-
 ]
