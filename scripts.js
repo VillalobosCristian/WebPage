@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "filename": "Resumen-Control-3.md"
         },
         {
-            "title": "Thermodynamics",
-            "filename": "Thermodynamics.md"
+            "title": "Flow Induced by Bacteria",
+            "filename": "Bact_flow.md"
         }
     ];
 
