@@ -12,25 +12,38 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Marked.js for Markdown Parsing (if needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/3.0.8/marked.min.js"></script>
+    <!-- MathJax for LaTeX Rendering (if needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"
+        async></script>
 </head>
 
 <body>
     <!-- Header Section -->
-    <header class="bg-primary text-white py-3">
+    <header class="bg-custom-primary text-white py-3">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
                 <h1 class="h3 mb-0">Cristian Villalobos</h1>
                 <nav>
                     <ul class="nav">
-                        <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="curriculum.html">Curriculum</a></li>
-                        <li class="nav-item"><a class="nav-link text-white"
-                                href="index.html#publications">Publications</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="index.html#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="curriculum.html">Curriculum</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html#publications">Publications</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#notes">Notes</a></li>
                     </ul>
                 </nav>
-                <button id="dark-mode-toggle" class="btn btn-outline-light"><i class="fas fa-moon"></i></button>
+                <!-- Optional: Dark Mode Toggle Button -->
+                <!-- If you wish to include it, ensure it's styled consistently across all pages -->
+                <!--
+                <button id="dark-mode-toggle" class="btn btn-outline-light" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                -->
             </div>
+            <!-- Optional: Detailed Contact Information -->
+            <!-- You can include contact info here if desired -->
         </div>
     </header>
 
@@ -70,7 +83,8 @@
                     <p><strong>Date of Birth:</strong> November 02, 1994</p>
                     <p><strong>Address:</strong> Av. Viel 1616. Dpto 1804. Santiago, Chile</p>
                     <p><strong>Phone:</strong> (+569) 88274915</p>
-                    <p><strong>Email:</strong> cristian.villalobos@ug.uchile.cl</p>
+                    <p><strong>Email:</strong> <a
+                            href="mailto:cristian.villalobos@ug.uchile.cl">cristian.villalobos@ug.uchile.cl</a></p>
                     <p><strong>Nationality:</strong> Chilean</p>
                 </div>
 
@@ -142,115 +156,68 @@
                         <li>2019 - Bacterial Shells at École Supérieure de Physique et de Chimie Industrielle</li>
                     </ul>
                 </div>
-            </div>
-        </section>
-    </main>
 
-    <!-- Footer Section -->
-    <footer class="bg-secondary text-white text-center py-3">
-        <div class="container">
-            <p>&copy; <span id="current-year"></span> Cristian Villalobos</p>
-            <nav>
-                <ul class="nav justify-content-center">
-                    <li class="nav-item"><a class="nav-link text-white" href="#">Terms</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#">Privacy</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#">Security</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#">Docs</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </footer>
-
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom Scripts -->
-    <script src="scripts.js"></script>
-</body>
-
-</html>
-<!-- curriculum.html -->
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curriculum Vitae - Cristian Villalobos</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="styles.css">
-    <!-- Marked.js for Markdown Parsing -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <!-- MathJax for LaTeX Rendering -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
-</head>
-
-<body>
-    <!-- Header Section -->
-    <header class="bg-primary text-white py-3">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <h1 class="h3 mb-0">Cristian Villalobos</h1>
-                <nav>
-                    <ul class="nav">
-                        <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="curriculum.html">Curriculum</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="index.html#publications">Publications</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="index.html#contact">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="#notes">Notes</a></li>
-                    </ul>
-                </nav>
-                <button id="dark-mode-toggle" class="btn btn-outline-light"><i class="fas fa-moon"></i></button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main>
-        <section id="curriculum" class="py-5">
-            <div class="container">
-                <h2 class="text-center mb-4">Curriculum Vitae</h2>
-
-                <!-- Existing Curriculum Sections -->
-
-                <!-- ... (Personal Details, Education, Skills, etc.) ... -->
-
-                <!-- New Notes Section -->
+                <!-- Optional: Notes Section (if applicable) -->
+                <!--
                 <div class="mb-5">
                     <h3 id="notes">Physics Notes</h3>
                     <div id="notes-content" class="border rounded p-4">
                         <!-- Notes will be dynamically loaded here -->
-                        <p>Loading notes...</p>
-                    </div>
-                </div>
+                <p>Loading notes...</p>
+            </div>
+            </div>
+            -->
             </div>
         </section>
     </main>
 
     <!-- Footer Section -->
-    <footer class="bg-secondary text-white text-center py-3">
+    <footer class="bg-custom-primary text-white text-center py-3">
         <div class="container">
             <p>&copy; <span id="current-year"></span> Cristian Villalobos</p>
             <nav>
                 <ul class="nav justify-content-center">
-                    <li class="nav-item"><a class="nav-link text-white" href="#">Terms</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#">Privacy</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#">Security</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#">Docs</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Terms</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Privacy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Security</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Docs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to Top" class="btn btn-primary btn-lg rounded-circle" title="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom Scripts -->
     <script src="scripts.js"></script>
+    <script>
+        // Script to update the current year in the footer
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+
+        // Back to Top Button Functionality
+        const backToTopButton = document.getElementById("back-to-top");
+
+        window.addEventListener("scroll", () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        });
+
+        backToTopButton.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    </script>
 </body>
 
 </html>

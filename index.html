@@ -12,7 +12,11 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome for Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="styles.css">
     <!-- Marked.js for Markdown Parsing (if needed) -->
@@ -27,18 +31,17 @@
 
 <body>
     <!-- Header Section -->
-    <header class="bg-primary text-white py-4">
+    <header class="bg-custom-primary text-white py-4">
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
                 <!-- Navigation Menu -->
                 <nav>
                     <ul class="nav">
-                        <li class="nav-item"><a class="nav-link text-white active" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="curriculum.html">Curriculum</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="publications.html">Publications</a>
-                        </li>
-                        <li class="nav-item"><a class="nav-link text-white" href="notes.html">Notes</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="gallery.html">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="curriculum.html">Curriculum</a></li>
+                        <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+                        <li class="nav-item"><a class="nav-link" href="notes.html">Notes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
                     </ul>
                 </nav>
 
@@ -98,7 +101,8 @@
                             <div class="col-md-6">
                                 <img src="Figures/Fig_DE.png" alt="Active bacterial bath in droplets" class="img-fluid"
                                     loading="lazy">
-                                    <img src="Gif/DE_experiment.gif" alt="Double Emulsion Experiment" class="card-img-top" loading="lazy">
+                                <img src="Gif/DE_experiment.gif" alt="Double Emulsion Experiment" class="card-img-top"
+                                    loading="lazy">
                             </div>
                             <div class="col-md-6 d-flex flex-column">
                                 <div class="card-body">
@@ -155,7 +159,7 @@
     <section id="research-interests" class="py-5">
         <div class="container">
             <h2 class="text-center mb-4">Research Interests</h2>
-            <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush d-flex justify-content-center">
                 <li class="list-group-item">Active matter and bacterial suspensions</li>
                 <li class="list-group-item">Stochastic modeling and numerical simulations</li>
                 <li class="list-group-item">Particle dynamics in confined systems</li>
@@ -203,16 +207,16 @@
     </section>
 
     <!-- Footer Section -->
-    <footer class="bg-secondary text-white text-center py-3">
+    <footer class="bg-custom-primary text-white text-center py-3">
         <div class="container">
-            <p>&copy; <span id="current-year"></span> Cristian Villalobos-Conchaa</p>
+            <p>&copy; <span id="current-year"></span> Cristian Villalobos-Concha</p>
             <nav>
                 <ul class="nav justify-content-center">
-                    <li class="nav-item"><a class="nav-link text-white" href="terms.html">Terms</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="privacy.html">Privacy</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="security.html">Security</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="docs.html">Docs</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="terms.html">Terms</a></li>
+                    <li class="nav-item"><a class="nav-link" href="privacy.html">Privacy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="security.html">Security</a></li>
+                    <li class="nav-item"><a class="nav-link" href="docs.html">Docs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -230,6 +234,24 @@
     <script>
         // Script to update the current year in the footer
         document.getElementById("current-year").textContent = new Date().getFullYear();
+
+        // Back to Top Button Functionality
+        const backToTopButton = document.getElementById("back-to-top");
+
+        window.addEventListener("scroll", () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        });
+
+        backToTopButton.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
     </script>
 </body>
 
